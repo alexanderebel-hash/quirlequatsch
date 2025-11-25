@@ -162,7 +162,7 @@ export default function ThemaPage() {
           })}
         </div>
 
-        {/* Test Section */}
+        {/* Interactive Games Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -171,13 +171,20 @@ export default function ThemaPage() {
         >
           <Card padding="lg">
             <div className="text-center">
-              <h2 className="text-title1 mb-2">Bereit für den Test?</h2>
+              <h2 className="text-title1 mb-4">🎮 Interaktive Spiele</h2>
               <p className="text-body text-secondary mb-6">
-                Teste dein Wissen mit {thema.testPool.length} Fragen zu diesem Thema!
+                Lerne spielerisch mit Memory und Quiz zu diesem Thema!
               </p>
-              <Button variant="success" size="lg">
-                🎯 Test starten
-              </Button>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href={`/uebungen/${thema.id}`}>
+                  <Button variant="hulk" size="lg">
+                    🎴 Memory spielen
+                  </Button>
+                </Link>
+                <Button variant="success" size="lg">
+                  🎯 Quiz starten
+                </Button>
+              </div>
             </div>
           </Card>
         </motion.div>
