@@ -1,12 +1,12 @@
 'use client';
 
 import { forwardRef, ButtonHTMLAttributes } from 'react';
-import { motion, HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type ButtonVariant = 'primary' | 'secondary' | 'plain' | 'success' | 'danger' | 'hulk';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   fullWidth?: boolean;
@@ -54,21 +54,23 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       select-none
     `;
 
+    const combinedClassName = `
+      ${baseStyles}
+      ${variants[variant]}
+      ${sizes[size]}
+      ${fullWidth ? 'w-full' : ''}
+      ${className}
+    `.trim();
+
     return (
       <motion.button
         ref={ref}
-        whileHover={{ scale: disabled ? 1 : 1.02 }}
-        whileTap={{ scale: disabled ? 1 : 0.97 }}
+        whileHover={{ scale: disabled || loading ? 1 : 1.02 }}
+        whileTap={{ scale: disabled || loading ? 1 : 0.97 }}
         transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-        className={`
-          ${baseStyles}
-          ${variants[variant]}
-          ${sizes[size]}
-          ${fullWidth ? 'w-full' : ''}
-          ${className}
-        `}
+        className={combinedClassName}
         disabled={disabled || loading}
-        {...props}
+        {...(props as any)}
       >
         {loading ? (
           <svg
