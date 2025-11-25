@@ -53,7 +53,7 @@ export interface Thema {
   id: string;
   title: string;
   icon: string;
-  color: string;
+  color: 'blue' | 'orange' | 'green' | 'purple' | 'red' | 'yellow' | 'teal' | 'indigo';
   shortDescription: string;
   bookPages: string;
   sections: Section[];
