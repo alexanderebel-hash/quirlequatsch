@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd capitanos-lernwelt && npm run build",
-  "outputDirectory": "capitanos-lernwelt/.next",
-  "installCommand": "cd capitanos-lernwelt && npm install"
+  "public": true,
+  "buildCommand": "npm run build",
+  "framework": "nextjs"
 }
