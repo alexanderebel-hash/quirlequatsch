@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ========================================
+     APPLE SYSTEM COLORS
+     ======================================== */
+  
+  /* Primary Colors */
+  --color-primary: #007AFF;
+  --color-primary-hover: #0066CC;
+  --color-success: #34C759;
+  --color-success-hover: #2DB84D;
+  --color-warning: #FF9500;
+  --color-danger: #FF3B30;
+  --color-purple: #AF52DE;
+  --color-indigo: #5856D6;
+  
+  /* Brand - Hulk Green */
+  --color-hulk: #34C759;
+  --color-hulk-dark: #2E7D32;
+  
+  /* Label Colors (Text) */
+  --color-label: #000000;
+  --color-secondary-label: rgba(60, 60, 67, 0.6);
+  --color-tertiary-label: rgba(60, 60, 67, 0.3);
+  --color-quaternary-label: rgba(60, 60, 67, 0.18);
+  
+  /* Background Colors */
+  --color-background: #FFFFFF;
+  --color-secondary-background: #F2F2F7;
+  --color-tertiary-background: #FFFFFF;
+  --color-grouped-background: #F2F2F7;
+  --color-secondary-grouped-background: #FFFFFF;
+  
+  /* Fill Colors */
+  --color-fill: rgba(120, 120, 128, 0.2);
+  --color-secondary-fill: rgba(120, 120, 128, 0.16);
+  --color-tertiary-fill: rgba(118, 118, 128, 0.12);
+  
+  /* Separator */
+  --color-separator: rgba(60, 60, 67, 0.29);
+  --color-opaque-separator: #C6C6C8;
+  
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  
+  /* Border Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Spacing (8px grid) */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #0A84FF;
+    --color-success: #30D158;
+    --color-warning: #FF9F0A;
+    --color-danger: #FF453A;
+    
+    --color-label: #FFFFFF;
+    --color-secondary-label: rgba(235, 235, 245, 0.6);
+    --color-tertiary-label: rgba(235, 235, 245, 0.3);
+    
+    --color-background: #000000;
+    --color-secondary-background: #1C1C1E;
+    --color-tertiary-background: #2C2C2E;
+    --color-grouped-background: #000000;
+    --color-secondary-grouped-background: #1C1C1E;
+    
+    --color-separator: rgba(84, 84, 88, 0.65);
+  }
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  background-color: var(--color-grouped-background);
+  color: var(--color-label);
+  line-height: 1.5;
+}
+
+/* ========================================
+   APPLE TYPOGRAPHY SCALE
+   ======================================== */
+
+.text-large-title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.5px;
+  color: var(--color-label);
+}
+
+.text-title1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.3px;
+  color: var(--color-label);
+}
+
+.text-title2 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.2px;
+  color: var(--color-label);
+}
+
+.text-title3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.1px;
+  color: var(--color-label);
+}
+
+.text-headline {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: var(--color-label);
+}
+
+.text-body {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: var(--color-label);
+}
+
+.text-callout {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+  color: var(--color-label);
+}
+
+.text-subheadline {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--color-secondary-label);
+}
+
+.text-footnote {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--color-tertiary-label);
+}
+
+.text-caption1 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--color-tertiary-label);
+}
+
+.text-caption2 {
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.06px;
+  color: var(--color-quaternary-label);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.card-shadow {
+  box-shadow: var(--shadow-sm);
+}
+
+.card-shadow-hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Smooth transitions */
+.transition-apple {
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(0, 122, 255, 0.2);
+}
