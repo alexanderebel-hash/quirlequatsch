@@ -1,56 +1,73 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 
 interface ThemeCardProps {
   id: string;
   title: string;
   description: string;
   icon: string;
+  color: 'blue' | 'orange' | 'green' | 'purple' | 'red' | 'yellow' | 'teal' | 'indigo';
   progress: number;
   totalSections: number;
   completedSections: number;
-  status: 'neu' | 'in-progress' | 'completed';
 }
+
+const colorClasses: Record<string, string> = {
+  blue: 'icon-container-blue',
+  orange: 'icon-container-orange',
+  green: 'icon-container-green',
+  purple: 'icon-container-purple',
+  red: 'icon-container-red',
+  yellow: 'icon-container-yellow',
+  teal: 'icon-container-teal',
+  indigo: 'icon-container-indigo',
+};
+
+const statusColors: Record<string, { bg: string; text: string }> = {
+  neu: { bg: 'bg-blue-500', text: 'text-white' },
+  'in-arbeit': { bg: 'bg-orange-500', text: 'text-white' },
+  fertig: { bg: 'bg-green-500', text: 'text-white' },
+};
 
 export function ThemeCard({
   id,
   title,
   description,
   icon,
+  color,
   progress,
   totalSections,
   completedSections,
-  status
 }: ThemeCardProps) {
-  const statusColors = {
-    'neu': 'bg-blue-500',
-    'in-progress': 'bg-orange-500',
-    'completed': 'bg-green-500'
-  };
-  
-  const statusLabels = {
-    'neu': 'Neu',
-    'in-progress': 'In Arbeit',
-    'completed': 'Fertig ✓'
-  };
+  const status = progress === 0 ? 'neu' : progress === 100 ? 'fertig' : 'in-arbeit';
+  const statusLabel = progress === 0 ? 'Neu' : progress === 100 ? 'Fertig ✓' : 'In Arbeit';
 
   return (
     <Link href={`/themen/${id}`}>
-      <motion.div
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md 
-                   transition-shadow duration-300 cursor-pointer
-                   border border-black/[0.04]"
+      <div
+        className="
+          bg-white rounded-2xl p-5 
+          shadow-sm hover:shadow-md 
+          transition-all duration-300 
+          cursor-pointer 
+          border border-black/[0.04]
+          hover:scale-[1.01] hover:-translate-y-0.5
+          active:scale-[0.99]
+        "
       >
-        {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 
-                          flex items-center justify-center text-2xl">
+            {/* Colored Icon Container */}
+            <div
+              className={`
+                w-12 h-12 rounded-xl 
+                flex items-center justify-center 
+                text-2xl
+                ${colorClasses[color] || colorClasses.blue}
+              `}
+            >
               {icon}
             </div>
             <div>
@@ -61,29 +78,30 @@ export function ThemeCard({
           <ChevronRight className="w-5 h-5 text-gray-300" />
         </div>
 
-        {/* Progress */}
         <div className="space-y-2">
           <div className="flex justify-between items-center">
             <span className="text-footnote">
               {completedSections}/{totalSections} Abschnitte
             </span>
-            <span className={`text-xs font-medium px-2 py-0.5 rounded-full text-white
-                           ${statusColors[status]}`}>
-              {statusLabels[status]}
+            <span
+              className={`
+                text-xs font-medium px-2 py-0.5 rounded-full
+                ${statusColors[status].bg} ${statusColors[status].text}
+              `}
+            >
+              {statusLabel}
             </span>
           </div>
-          
+
           {/* Progress Bar */}
-          <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-full bg-gradient-to-r from-green-400 to-green-500 rounded-full"
+          <div className="progress-bar">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${Math.max(progress, 0)}%` }}
             />
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }

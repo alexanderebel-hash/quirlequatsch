@@ -1,214 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ============================================
+   APPLE DESIGN SYSTEM - TYPOGRAPHY & COLORS
+   ============================================ */
 
 :root {
-  /* ========================================
-     APPLE SYSTEM COLORS
-     ======================================== */
-  
-  /* Primary Colors */
-  --color-primary: #007AFF;
-  --color-primary-hover: #0066CC;
-  --color-success: #34C759;
-  --color-success-hover: #2DB84D;
-  --color-warning: #FF9500;
-  --color-danger: #FF3B30;
+  /* Apple System Colors */
+  --color-blue: #007AFF;
+  --color-green: #34C759;
+  --color-orange: #FF9500;
+  --color-red: #FF3B30;
   --color-purple: #AF52DE;
+  --color-pink: #FF2D55;
+  --color-yellow: #FFCC00;
+  --color-teal: #5AC8FA;
   --color-indigo: #5856D6;
   
-  /* Brand - Hulk Green */
+  /* Hulk Green */
   --color-hulk: #34C759;
-  --color-hulk-dark: #2E7D32;
+  --color-hulk-dark: #28A745;
   
-  /* Label Colors (Text) */
+  /* Label Colors */
   --color-label: #000000;
-  --color-secondary-label: rgba(60, 60, 67, 0.6);
-  --color-tertiary-label: rgba(60, 60, 67, 0.3);
-  --color-quaternary-label: rgba(60, 60, 67, 0.18);
+  --color-secondary-label: #3C3C43;
+  --color-tertiary-label: #48484A;
+  --color-quaternary-label: #636366;
   
   /* Background Colors */
-  --color-background: #FFFFFF;
-  --color-secondary-background: #F2F2F7;
-  --color-tertiary-background: #FFFFFF;
-  --color-grouped-background: #F2F2F7;
-  --color-secondary-grouped-background: #FFFFFF;
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F2F2F7;
+  --color-bg-tertiary: #FFFFFF;
   
   /* Fill Colors */
-  --color-fill: rgba(120, 120, 128, 0.2);
-  --color-secondary-fill: rgba(120, 120, 128, 0.16);
-  --color-tertiary-fill: rgba(118, 118, 128, 0.12);
+  --color-fill: #787880;
+  --color-secondary-fill: #787880;
   
   /* Separator */
-  --color-separator: rgba(60, 60, 67, 0.29);
-  --color-opaque-separator: #C6C6C8;
+  --color-separator: rgba(60, 60, 67, 0.12);
   
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
-  
-  /* Border Radius */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
-  --radius-full: 9999px;
-  
-  /* Spacing (8px grid) */
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-5: 20px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
-  --spacing-10: 40px;
-  --spacing-12: 48px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: #0A84FF;
-    --color-success: #30D158;
-    --color-warning: #FF9F0A;
-    --color-danger: #FF453A;
-    
-    --color-label: #FFFFFF;
-    --color-secondary-label: rgba(235, 235, 245, 0.6);
-    --color-tertiary-label: rgba(235, 235, 245, 0.3);
-    
-    --color-background: #000000;
-    --color-secondary-background: #1C1C1E;
-    --color-tertiary-background: #2C2C2E;
-    --color-grouped-background: #000000;
-    --color-secondary-grouped-background: #1C1C1E;
-    
-    --color-separator: rgba(84, 84, 88, 0.65);
-  }
-}
-
-/* Base Styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  background-color: var(--color-grouped-background);
-  color: var(--color-label);
-  line-height: 1.5;
-}
-
-/* ========================================
+/* ============================================
    APPLE TYPOGRAPHY SCALE
-   ======================================== */
+   ============================================ */
 
+/* Large Title - 34px Bold */
 .text-large-title {
   font-size: 34px;
-  font-weight: 700;
   line-height: 41px;
+  font-weight: 700;
   letter-spacing: -0.5px;
-  color: var(--color-label);
 }
 
+/* Title 1 - 28px Bold */
 .text-title1 {
   font-size: 28px;
-  font-weight: 700;
   line-height: 34px;
+  font-weight: 700;
   letter-spacing: -0.3px;
-  color: var(--color-label);
 }
 
+/* Title 2 - 22px Bold */
 .text-title2 {
   font-size: 22px;
-  font-weight: 600;
   line-height: 28px;
+  font-weight: 700;
   letter-spacing: -0.2px;
-  color: var(--color-label);
 }
 
+/* Title 3 - 20px Semibold */
 .text-title3 {
   font-size: 20px;
-  font-weight: 600;
   line-height: 25px;
+  font-weight: 600;
   letter-spacing: -0.1px;
-  color: var(--color-label);
 }
 
+/* Headline - 17px Semibold */
 .text-headline {
   font-size: 17px;
-  font-weight: 600;
   line-height: 22px;
-  letter-spacing: 0;
-  color: var(--color-label);
+  font-weight: 600;
 }
 
+/* Body - 17px Regular */
 .text-body {
   font-size: 17px;
-  font-weight: 400;
   line-height: 22px;
-  letter-spacing: 0;
-  color: var(--color-label);
+  font-weight: 400;
 }
 
+/* Callout - 16px Regular */
 .text-callout {
   font-size: 16px;
-  font-weight: 400;
   line-height: 21px;
-  letter-spacing: 0;
-  color: var(--color-label);
+  font-weight: 400;
 }
 
+/* Subheadline - 15px Regular */
 .text-subheadline {
   font-size: 15px;
-  font-weight: 400;
   line-height: 20px;
-  letter-spacing: 0;
+  font-weight: 400;
   color: var(--color-secondary-label);
 }
 
+/* Footnote - 13px Regular */
 .text-footnote {
   font-size: 13px;
-  font-weight: 400;
   line-height: 18px;
-  letter-spacing: 0;
+  font-weight: 400;
   color: var(--color-tertiary-label);
 }
 
-.text-caption1 {
+/* Caption 1 - 12px Regular */
+.text-caption {
   font-size: 12px;
-  font-weight: 400;
   line-height: 16px;
-  letter-spacing: 0;
-  color: var(--color-tertiary-label);
-}
-
-.text-caption2 {
-  font-size: 11px;
   font-weight: 400;
-  line-height: 13px;
-  letter-spacing: 0.06px;
   color: var(--color-quaternary-label);
 }
 
-/* ========================================
-   UTILITY CLASSES
-   ======================================== */
+/* Caption 2 - 11px Regular */
+.text-caption2 {
+  font-size: 11px;
+  line-height: 13px;
+  font-weight: 400;
+  color: var(--color-quaternary-label);
+}
+
+/* ============================================
+   GLASSMORPHISM & EFFECTS
+   ============================================ */
 
 .glass {
   background: rgba(255, 255, 255, 0.72);
@@ -222,26 +149,203 @@ body {
   -webkit-backdrop-filter: blur(20px);
 }
 
-.card-shadow {
+/* ============================================
+   CARD STYLES
+   ============================================ */
+
+.card {
+  background: var(--color-bg-primary);
+  border-radius: 16px;
   box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
-.card-shadow-hover {
+.card-elevated {
+  background: var(--color-bg-primary);
+  border-radius: 16px;
   box-shadow: var(--shadow-md);
 }
 
-/* Smooth transitions */
-.transition-apple {
-  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+.btn-primary {
+  background: var(--color-blue);
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
-/* Focus styles */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+.btn-primary:hover {
+  filter: brightness(1.1);
 }
 
-/* Selection */
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-hulk {
+  background: linear-gradient(135deg, var(--color-hulk) 0%, var(--color-hulk-dark) 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-hulk:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progress-bar {
+  height: 6px;
+  background: #E5E5EA;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ADE80 0%, #22C55E 100%);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+/* ============================================
+   ICON CONTAINER COLORS
+   ============================================ */
+
+.icon-container-blue {
+  background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+}
+
+.icon-container-orange {
+  background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+}
+
+.icon-container-green {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+}
+
+.icon-container-purple {
+  background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+}
+
+.icon-container-red {
+  background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+}
+
+.icon-container-yellow {
+  background: linear-gradient(135deg, #FFFDE7 0%, #FFF9C4 100%);
+}
+
+.icon-container-teal {
+  background: linear-gradient(135deg, #E0F7FA 0%, #B2EBF2 100%);
+}
+
+.icon-container-indigo {
+  background: linear-gradient(135deg, #E8EAF6 0%, #C5CAE9 100%);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.5s ease forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Selection Color */
 ::selection {
-  background-color: rgba(0, 122, 255, 0.2);
+  background-color: rgba(52, 199, 89, 0.2);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-fill);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary-fill);
+}
+
+/* ============================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================ */
+
+@media (max-width: 640px) {
+  .text-large-title {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  
+  .text-title1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  
+  .text-title2 {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
