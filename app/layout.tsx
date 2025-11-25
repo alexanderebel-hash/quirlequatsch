@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import { TabBar } from '@/components/layout/TabBar';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Capitano's Lernwelt - Biologie & Messen",
-  description: 'Interaktive Lernplattform für Capitano zur Vorbereitung auf die Klassenarbeit',
+  title: "Capitano's Lernwelt",
+  description: 'Lerne spielerisch für deine Klassenarbeit!',
 };
 
 export default function RootLayout({
@@ -13,8 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className="antialiased">
-        {children}
+      <body className={`${inter.className} bg-[#F2F2F7]`}>
+        <main className="pb-20 min-h-screen">
+          {children}
+        </main>
+        <TabBar />
       </body>
     </html>
   );
