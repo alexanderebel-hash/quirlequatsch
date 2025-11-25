@@ -2,6 +2,5 @@
   "buildCommand": "cd capitanos-lernwelt && npm run build",
   "outputDirectory": "capitanos-lernwelt/.next",
   "installCommand": "cd capitanos-lernwelt && npm install",
-  "framework": "nextjs",
-  "rootDirectory": "capitanos-lernwelt"
+  "framework": "nextjs"
 }
