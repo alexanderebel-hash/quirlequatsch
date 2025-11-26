@@ -19,7 +19,8 @@ export default function RootLayout({
     <html lang="de">
       <body className={`${inter.className} bg-[#F2F2F7]`}>
         <TabBar />
-        <main className="pt-24 min-h-screen">
+        {/* Mehr Padding auf Tablets wegen größerer Navigation */}
+        <main className="pt-28 md:pt-32 lg:pt-36 min-h-screen">
           {children}
         </main>
       </body>

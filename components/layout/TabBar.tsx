@@ -24,12 +24,12 @@ export function TabBar() {
       {/* HULK GRÜN Header */}
       <div className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 shadow-lg">
         {/* Title */}
-        <div className="text-center py-2 border-b border-green-400/30">
-          <h1 className="text-white font-bold text-lg">💚 Capitano's Lernwelt</h1>
+        <div className="text-center py-2 md:py-3 border-b border-green-400/30">
+          <h1 className="text-white font-bold text-lg md:text-xl lg:text-2xl">💚 Capitano's Lernwelt</h1>
         </div>
         
-        {/* Tabs */}
-        <div className="flex justify-around items-center py-2 px-2 max-w-lg mx-auto">
+        {/* Tabs - GRÖSSER auf Tablet */}
+        <div className="flex justify-around items-center py-2 md:py-3 px-2 max-w-2xl mx-auto">
           {tabs.map((tab) => {
             const active = isActive(tab.href);
             
@@ -39,7 +39,10 @@ export function TabBar() {
                 href={tab.href}
                 className={`
                   flex flex-col items-center justify-center
-                  px-3 py-2 rounded-xl min-w-[60px]
+                  px-3 md:px-6 lg:px-8
+                  py-2 md:py-3
+                  rounded-xl md:rounded-2xl
+                  min-w-[60px] md:min-w-[80px] lg:min-w-[100px]
                   transition-all duration-200
                   ${active 
                     ? 'bg-white text-green-600 shadow-md scale-105' 
@@ -47,8 +50,8 @@ export function TabBar() {
                   }
                 `}
               >
-                <span className="text-xl">{tab.emoji}</span>
-                <span className={`text-[10px] mt-0.5 ${active ? 'font-bold' : ''}`}>
+                <span className="text-2xl md:text-3xl lg:text-4xl">{tab.emoji}</span>
+                <span className={`text-xs md:text-sm lg:text-base mt-0.5 ${active ? 'font-bold' : 'font-medium'}`}>
                   {tab.label}
                 </span>
               </Link>
