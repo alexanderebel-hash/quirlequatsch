@@ -18,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={`${inter.className} bg-[#F2F2F7]`}>
-        <main className="pb-20 min-h-screen">
+        <TabBar />
+        <main className="pt-24 min-h-screen">
           {children}
         </main>
-        <TabBar />
       </body>
     </html>
   );

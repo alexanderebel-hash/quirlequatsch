@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
@@ -18,7 +18,7 @@ const themen = [
   { id: 'diagramme', icon: '📊', title: 'Diagramme', color: 'bg-indigo-100' },
 ];
 
-export default function MemoryPage() {
+function MemoryPageContent() {
   const searchParams = useSearchParams();
   const themaFromUrl = searchParams.get('thema');
   const [selectedThema, setSelectedThema] = useState<string | null>(themaFromUrl);
@@ -84,5 +84,13 @@ export default function MemoryPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function MemoryPage() {
+  return (
+    <Suspense fallback={<div className="px-4 pt-6 text-center">Lädt...</div>}>
+      <MemoryPageContent />
+    </Suspense>
   );
 }
