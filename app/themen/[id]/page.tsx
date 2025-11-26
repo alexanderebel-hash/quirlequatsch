@@ -39,7 +39,7 @@ export default function ThemaPage() {
       <header className="glass sticky top-0 z-50 border-b border-[rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-4">
-            <Link href="/">
+            <Link href="/lernen">
               <Button variant="secondary" size="sm">
                 <ArrowLeft size={16} className="mr-2" />
                 Zurück
@@ -191,10 +191,10 @@ export default function ThemaPage() {
 
         {/* Back Button */}
         <div className="mt-8 text-center">
-          <Link href="/">
+          <Link href="/lernen">
             <Button variant="secondary" size="md">
               <ArrowLeft size={16} className="mr-2" />
-              Zurück zur Übersicht
+              Zurück zu Lernen
             </Button>
           </Link>
         </div>
