@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { TabBar } from '@/components/layout/TabBar';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Capitano's Lernwelt",
-  description: 'Lerne spielerisch für deine Klassenarbeit!',
+  title: 'LernBoost',
+  description: 'Altersgerechte Lernwelten für jedes Kind',
 };
 
 export default function RootLayout({
@@ -18,11 +17,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={`${inter.className} bg-[#F2F2F7]`}>
-        <TabBar />
-        {/* Mehr Padding auf Tablets wegen größerer Navigation */}
-        <main className="pt-28 md:pt-32 lg:pt-36 min-h-screen">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
