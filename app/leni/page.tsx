@@ -86,17 +86,17 @@ export default function LeniHomePage() {
           </div>
         </Link>
 
-        <Link href="/leni/uebungen?fach=englisch">
+        <Link href="/leni/englisch">
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
               <span className="text-2xl">🇬🇧</span>
             </div>
             <div className="flex-1">
               <p className="font-semibold text-gray-800">Englisch</p>
-              <p className="text-sm text-gray-500">Vokabeln, Grammatik, Texte</p>
+              <p className="text-sm text-gray-500">Zeitformen mit K-POP lernen</p>
             </div>
             <div className="text-right">
-              <p className="text-sm font-medium text-red-600">65%</p>
+              <p className="text-sm font-medium text-indigo-600">0%</p>
               <p className="text-xs text-gray-400">Fortschritt</p>
             </div>
           </div>
