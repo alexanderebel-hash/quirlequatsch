@@ -101,6 +101,22 @@ export default function LeniHomePage() {
             </div>
           </div>
         </Link>
+
+        <Link href="/leni/franzoesisch">
+          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+              <span className="text-2xl">🇫🇷</span>
+            </div>
+            <div className="flex-1">
+              <p className="font-semibold text-gray-800">Französisch</p>
+              <p className="text-sm text-gray-500">Unité 1 - 84 Vokabeln</p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm font-medium text-blue-600">0%</p>
+              <p className="text-xs text-gray-400">Fortschritt</p>
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* Quick Actions */}
