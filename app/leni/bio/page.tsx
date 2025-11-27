@@ -1,7 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, BookOpen, Gamepad2, ListOrdered, Brain, FileText, Microscope } from 'lucide-react';
+import { ArrowLeft, BookOpen, Gamepad2, ListOrdered, Brain, FileText, Microscope, Play, Headphones, Video } from 'lucide-react';
+
+// Media URLs aus Environment Variables
+const MEDIA = {
+  video: process.env.NEXT_PUBLIC_BIO_VIDEO_URL || null,
+  podcast: process.env.NEXT_PUBLIC_BIO_PODCAST_URL || null,
+};
 
 const activities = [
   {
@@ -65,14 +71,89 @@ export default function LeniBioPage() {
         <p className="text-gray-500">Bio-Test am Donnerstag • Pro-/Eukaryoten & Organellen</p>
       </div>
 
+      {/* ============================================ */}
+      {/* VIDEO SECTION */}
+      {/* ============================================ */}
+      <div className="bg-white rounded-2xl p-5 mb-6 border border-gray-100 shadow-sm">
+        <h2 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <Video className="w-5 h-5 text-red-500" />
+          🎬 Erklär-Video: Pro- & Eukaryoten
+        </h2>
+        
+        {MEDIA.video ? (
+          <div className="rounded-xl overflow-hidden bg-black aspect-video">
+            <video 
+              controls 
+              className="w-full h-full"
+              preload="metadata"
+              playsInline
+            >
+              <source src={MEDIA.video} type="video/mp4" />
+              Dein Browser unterstützt kein Video.
+            </video>
+          </div>
+        ) : (
+          <div className="rounded-xl bg-gray-100 aspect-video flex flex-col items-center justify-center text-gray-400">
+            <Play className="w-12 h-12 mb-2 opacity-50" />
+            <p className="text-sm">Video wird geladen...</p>
+          </div>
+        )}
+        
+        <p className="text-sm text-gray-500 mt-3">
+          📺 Schau dir das Video an bevor du mit den Übungen startest!
+        </p>
+      </div>
+
+      {/* ============================================ */}
+      {/* PODCAST SECTION */}
+      {/* ============================================ */}
+      <div className="bg-white rounded-2xl p-5 mb-6 border border-gray-100 shadow-sm">
+        <h2 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <Headphones className="w-5 h-5 text-purple-500" />
+          🎧 Podcast: Zwei Lebensstrategien im Vergleich
+        </h2>
+        
+        {MEDIA.podcast ? (
+          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4">
+            <audio 
+              controls 
+              className="w-full"
+              preload="metadata"
+              style={{ height: '48px' }}
+            >
+              <source src={MEDIA.podcast} type="audio/mp4" />
+              <source src={MEDIA.podcast} type="audio/m4a" />
+              Dein Browser unterstützt kein Audio.
+            </audio>
+            <p className="text-xs text-purple-600 mt-2 text-center">
+              Prokaryoten & Eukaryoten - Zwei Lebensstrategien im Vergleich
+            </p>
+          </div>
+        ) : (
+          <div className="rounded-xl bg-gradient-to-r from-purple-50 to-indigo-50 p-6 flex items-center gap-4">
+            <div className="w-14 h-14 bg-purple-200 rounded-xl flex items-center justify-center">
+              <Headphones className="w-7 h-7 text-purple-500" />
+            </div>
+            <div>
+              <p className="font-medium text-purple-800">Podcast wird geladen...</p>
+              <p className="text-sm text-purple-600">Bald kannst du hier hören!</p>
+            </div>
+          </div>
+        )}
+        
+        <p className="text-sm text-gray-500 mt-3">
+          🎵 Perfekt zum Hören unterwegs oder beim Entspannen!
+        </p>
+      </div>
+
       {/* Progress Card */}
       <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-5 mb-6 text-white">
         <div className="flex items-center justify-between mb-3">
           <span className="font-medium">Dein Fortschritt</span>
-          <span className="text-emerald-100">3/5 Aktivitäten</span>
+          <span className="text-emerald-100">0/5 Aktivitäten</span>
         </div>
         <div className="h-2 bg-white/30 rounded-full overflow-hidden">
-          <div className="h-full bg-white rounded-full w-[60%]" />
+          <div className="h-full bg-white rounded-full w-[0%]" />
         </div>
       </div>
 
