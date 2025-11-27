@@ -2,6 +2,26 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### 1. Environment Setup
+
+Copy the example environment file and add your tokens:
+
+```bash
+cp .env.example .env.local
+```
+
+Then add your Vercel Blob Storage token to `.env.local`:
+- Get your token from [Vercel Dashboard → Storage](https://vercel.com/dashboard/stores)
+- Add it to `BLOB_READ_WRITE_TOKEN=your_token_here`
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the Development Server
+
 First, run the development server:
 
 ```bash
