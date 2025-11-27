@@ -44,7 +44,7 @@ const kinder = [
     borderColor: 'border-purple-300',
     description: 'Mathe & Englisch',
     style: 'Modern & Elegant',
-    active: false,
+    active: true,
   },
   {
     id: 'lenny',
