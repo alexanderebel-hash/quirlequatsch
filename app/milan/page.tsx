@@ -6,14 +6,14 @@ import { Zap, Trophy, Target, TrendingUp } from 'lucide-react';
 export default function MilanHomePage() {
   return (
     <div className="px-4 md:px-6 lg:px-8 py-4">
-      {/* HULK Header */}
+      {/* Header */}
       <div className="text-center mb-6">
         <span className="text-6xl md:text-7xl lg:text-8xl block mb-2">🦖</span>
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600 mb-1">
-          BEREIT, CAPITANO? 💪
+          Bereit, Capitano?
         </h1>
         <p className="text-green-500 text-lg">
-          Zeit, deine Lernpower zu zeigen!
+          Los geht's!
         </p>
       </div>
 
@@ -39,10 +39,9 @@ export default function MilanHomePage() {
       <div className="bg-gradient-to-r from-green-100 via-emerald-100 to-green-100 rounded-3xl p-5 md:p-6 mb-6 text-center border-2 border-green-300 shadow-sm">
         <div className="flex items-center justify-center gap-2 mb-2">
           <span className="text-3xl">🔥</span>
-          <p className="text-2xl font-bold text-green-700">7 TAGE STREAK!</p>
-          <span className="text-3xl">🔥</span>
+          <p className="text-2xl font-bold text-green-700">7 Tage in Folge</p>
         </div>
-        <p className="text-green-600 font-medium">DU BIST UNSTOPPBAR! WEITER SO!</p>
+        <p className="text-green-600 font-medium">Super, weiter so!</p>
       </div>
 
       {/* Mission Buttons */}
@@ -54,8 +53,8 @@ export default function MilanHomePage() {
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-4xl md:text-5xl">💪</span>
                   <div>
-                    <p className="font-bold text-xl md:text-2xl">TRAINING STARTEN</p>
-                    <p className="text-green-100 text-sm md:text-base">Sammle XP & Level Up!</p>
+                    <p className="font-bold text-xl md:text-2xl">Übung starten</p>
+                    <p className="text-green-100 text-sm md:text-base">Sammle Punkte</p>
                   </div>
                 </div>
               </div>
@@ -71,8 +70,8 @@ export default function MilanHomePage() {
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-4xl md:text-5xl">🧠</span>
                   <div>
-                    <p className="font-bold text-xl md:text-2xl">NEUE MISSION</p>
-                    <p className="text-blue-100 text-sm md:text-base">Lerne coole neue Sachen!</p>
+                    <p className="font-bold text-xl md:text-2xl">Neues Thema lernen</p>
+                    <p className="text-blue-100 text-sm md:text-base">Entdecke neue Inhalte</p>
                   </div>
                 </div>
               </div>
@@ -88,8 +87,8 @@ export default function MilanHomePage() {
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-4xl md:text-5xl">🏆</span>
                   <div>
-                    <p className="font-bold text-xl md:text-2xl">BOSS FIGHT!</p>
-                    <p className="text-purple-100 text-sm md:text-base">Zeig, was du drauf hast!</p>
+                    <p className="font-bold text-xl md:text-2xl">Test starten</p>
+                    <p className="text-purple-100 text-sm md:text-base">Prüfe dein Wissen</p>
                   </div>
                 </div>
               </div>

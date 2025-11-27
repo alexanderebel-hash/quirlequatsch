@@ -8,56 +8,44 @@ const kinder = [
     id: 'lilly',
     name: 'Lilly',
     klasse: '4. Klasse',
-    emoji: '💖',
     mascot: '🦄',
     weltName: "Lilly's Zauber-Lernwelt",
-    color: 'from-pink-400 via-pink-500 to-rose-500',
-    bgColor: 'bg-pink-100',
-    borderColor: 'border-pink-300',
+    borderColor: 'border-pink-500',
+    bgColor: 'bg-pink-50',
     description: 'Lesen, Schreiben, Rechnen',
-    style: 'Magisch & Bunt ✨',
     active: false,
   },
   {
     id: 'milan',
     name: 'Milan',
     klasse: '5. Klasse',
-    emoji: '💚',
     mascot: '🦖',
     weltName: "Capitano's Lernwelt",
-    color: 'from-green-500 via-green-600 to-emerald-600',
-    bgColor: 'bg-green-100',
-    borderColor: 'border-green-300',
+    borderColor: 'border-green-500',
+    bgColor: 'bg-green-50',
     description: 'Biologie & NaWi',
-    style: 'HULK SMASH! 💪',
     active: true,
   },
   {
     id: 'leni',
     name: 'Leni',
     klasse: '7. Klasse',
-    emoji: '💜',
     mascot: '🦋',
     weltName: "Leni's Lernlounge",
-    color: 'from-purple-500 via-violet-500 to-indigo-600',
-    bgColor: 'bg-purple-100',
-    borderColor: 'border-purple-300',
+    borderColor: 'border-purple-500',
+    bgColor: 'bg-purple-50',
     description: 'Mathe & Englisch',
-    style: 'Modern & Elegant',
     active: true,
   },
   {
     id: 'lenny',
     name: 'Lenny',
     klasse: '10. Klasse',
-    emoji: '💙',
     mascot: '🚀',
     weltName: "Lenny's Study Hub",
-    color: 'from-slate-700 via-blue-600 to-cyan-600',
-    bgColor: 'bg-slate-100',
-    borderColor: 'border-slate-300',
+    borderColor: 'border-blue-600',
+    bgColor: 'bg-blue-50',
     description: 'Abi-Vorbereitung',
-    style: 'Clean & Fokussiert',
     active: false,
   },
 ];
@@ -77,7 +65,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* Kinder-Auswahl - Sortiert nach Alter */}
+      {/* Kinder-Auswahl */}
       <main className="flex-1 flex items-center justify-center p-4 md:p-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 max-w-6xl w-full">
           {kinder.map((kind, index) => (
@@ -85,88 +73,89 @@ export default function HomePage() {
               key={kind.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.3 }}
             >
               {kind.active ? (
-                <Link href={`/${kind.id}`}>
+                <Link 
+                  href={`/${kind.id}`}
+                  aria-label={`${kind.name}'s Lernwelt öffnen, ${kind.klasse}`}
+                >
                   <div className={`
                     relative overflow-hidden
-                    rounded-3xl md:rounded-[2rem]
-                    bg-gradient-to-br ${kind.color}
-                    p-5 md:p-6 lg:p-8
-                    text-white text-center
-                    shadow-lg hover:shadow-2xl
-                    transform hover:scale-105
-                    transition-all duration-300
+                    rounded-2xl
+                    bg-white
+                    ${kind.borderColor} border-l-4
+                    p-5 md:p-6
+                    text-center
+                    shadow-sm hover:shadow-md
+                    transition-shadow duration-200
                     cursor-pointer
-                    min-h-[220px] md:min-h-[280px] lg:min-h-[320px]
+                    min-h-[220px] md:min-h-[280px] lg:min-h-[300px]
                     flex flex-col items-center justify-center
                   `}>
-                    {/* Mascot */}
-                    <span className="text-5xl md:text-6xl lg:text-7xl mb-2">
-                      {kind.mascot}
-                    </span>
+                    {/* Mascot Icon Container */}
+                    <div className={`w-16 h-16 ${kind.bgColor} rounded-2xl flex items-center justify-center mb-3`}>
+                      <span className="text-4xl">{kind.mascot}</span>
+                    </div>
                     
-                    {/* Name & Klasse */}
-                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+                    {/* Name */}
+                    <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-1">
                       {kind.name}
                     </h2>
-                    <p className="text-sm md:text-base opacity-80 mb-2">
+                    
+                    {/* Klasse */}
+                    <p className="text-sm text-gray-500 mb-2">
                       {kind.klasse}
                     </p>
                     
                     {/* Welt-Name */}
-                    <p className="text-xs md:text-sm lg:text-base opacity-90 font-medium">
+                    <p className="text-xs md:text-sm text-gray-400">
                       {kind.weltName}
                     </p>
-                    
-                    {/* Style */}
-                    <p className="text-xs opacity-75 mt-1">
-                      {kind.style}
-                    </p>
-
-                    {/* Active Indicator */}
-                    <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-white/20 rounded-full px-2 py-1">
-                      <span className="text-xs font-bold">▶️ START</span>
-                    </div>
                   </div>
                 </Link>
               ) : (
-                <div className={`
+                <div 
+                  role="button"
+                  aria-disabled="true"
+                  aria-label={`${kind.name}, ${kind.klasse} - Bald verfügbar`}
+                  className={`
                   relative overflow-hidden
-                  rounded-3xl md:rounded-[2rem]
-                  ${kind.bgColor} ${kind.borderColor}
-                  border-2 border-dashed
-                  p-5 md:p-6 lg:p-8
+                  rounded-2xl
+                  bg-white
+                  border-2 border-dashed border-gray-200
+                  p-5 md:p-6
                   text-center
-                  min-h-[220px] md:min-h-[280px] lg:min-h-[320px]
+                  min-h-[220px] md:min-h-[280px] lg:min-h-[300px]
                   flex flex-col items-center justify-center
-                  opacity-70 hover:opacity-90 transition-opacity
+                  opacity-60
                 `}>
                   {/* Mascot */}
-                  <span className="text-5xl md:text-6xl lg:text-7xl mb-2 grayscale-[30%]">
-                    {kind.mascot}
-                  </span>
+                  <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-3">
+                    <span className="text-4xl">{kind.mascot}</span>
+                  </div>
                   
-                  {/* Name & Klasse */}
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600">
+                  {/* Name */}
+                  <h2 className="text-xl md:text-2xl font-semibold text-gray-600 mb-1">
                     {kind.name}
                   </h2>
-                  <p className="text-sm md:text-base text-gray-500 mb-2">
+                  
+                  {/* Klasse */}
+                  <p className="text-sm text-gray-500 mb-2">
                     {kind.klasse}
                   </p>
                   
                   {/* Status */}
-                  <p className="text-xs md:text-sm text-gray-400">
+                  <p className="text-xs text-gray-400">
                     {kind.description}
                   </p>
 
-                  {/* Coming Soon Badge */}
-                  <div className="absolute top-3 right-3 md:top-4 md:right-4">
-                    <span className="text-lg md:text-xl">🔒</span>
+                  {/* Lock Icon */}
+                  <div className="mt-3">
+                    <span className="text-2xl">🔒</span>
                   </div>
                   
-                  <p className="text-xs text-gray-400 mt-2">Kommt bald!</p>
+                  <p className="text-xs text-gray-600 mt-1">Kommt bald</p>
                 </div>
               )}
             </motion.div>

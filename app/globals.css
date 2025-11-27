@@ -5,6 +5,12 @@
    ============================================ */
 
 :root {
+  /* Safe Area Insets - iOS Notch/Home Indicator Support */
+  --safe-area-top: env(safe-area-inset-top);
+  --safe-area-bottom: env(safe-area-inset-bottom);
+  --safe-area-left: env(safe-area-inset-left);
+  --safe-area-right: env(safe-area-inset-right);
+  
   /* Apple System Colors */
   --color-blue: #007AFF;
   --color-green: #34C759;
@@ -303,6 +309,30 @@
 
 .safe-area-inset-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* ============================================
+   ACCESSIBILITY - FOCUS STATES
+   ============================================ */
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom focus for buttons and links */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Selection Color */
