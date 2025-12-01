@@ -19,17 +19,19 @@ export default function GrundlagenPage() {
       title: 'Das allgemeine Dreieck',
       content: (
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-[#FFB800] to-[#FF9500] rounded-2xl p-5 text-white">
+          <div className="bg-[#34C759] rounded-2xl p-5 text-white">
             <div className="flex items-start gap-4">
-              <span className="text-3xl">🦁</span>
-            <div>
-              <p className="font-bold mb-2">LayLay sagt:</p>
-              <p className="text-white/90 text-sm">
-                Ein Dreieck: 3 Ecken, 3 Seiten, 3 Winkel. 
-                Klingt basic, ist aber die Basis für alles andere. 
-                Ohne das läuft nix. Also los. 🔺
-              </p>
-            </div>
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">😐</span>
+              </div>
+              <div>
+                <p className="font-bold mb-2">Tangens-Torsten erklärt:</p>
+                <p className="text-white/90 text-sm">
+                  Dreieck. 3 Ecken, 3 Seiten, 3 Winkel. 
+                  Basis für Sinus und Kosinus. 
+                  Merken.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -173,15 +175,16 @@ export default function GrundlagenPage() {
             </p>
           </div>
 
-          <div className="bg-gradient-to-r from-[#FFB800] to-[#FF9500] rounded-2xl p-5 text-white">
+          <div className="bg-[#34C759] rounded-2xl p-5 text-white">
             <div className="flex items-start gap-4">
-              <span className="text-3xl">🦁</span>
+              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">😐</span>
+              </div>
               <div>
-                <p className="font-bold mb-2">LayLay erklärt:</p>
+                <p className="font-bold mb-2">Torsten:</p>
                 <p className="text-white/90 text-sm">
-                  Real talk: Wenn du zwei Winkel kennst, kannst du den dritten ausrechnen. 
-                  Simple Mathe: 180° minus die anderen beiden. Ez clap. 
-                  Beispiel: α=60°, β=70° → γ=50°. Done. 🎯
+                  Zwei Winkel bekannt? Dann 180° minus die beiden = dritter Winkel.
+                  Beispiel: α=60°, β=70° → γ = 180° - 60° - 70° = 50°.
                 </p>
               </div>
             </div>
@@ -308,15 +311,14 @@ export default function GrundlagenPage() {
           </div>
 
           {showFeedback && (
-            <LayLayFeedback
-              type={feedbackType}
-              message={
-                feedbackType === 'success'
-                  ? 'Passt. Weiter.'
-                  : 'Nope. Nochmal.'
-              }
-              onClose={() => setShowFeedback(false)}
-            />
+            <div className={`fixed bottom-20 left-1/2 -translate-x-1/2 px-6 py-3 rounded-xl ${
+              feedbackType === 'success' ? 'bg-[#34C759]' : 'bg-[#FF3B30]'
+            } text-white shadow-lg z-50 flex items-center gap-3`}>
+              <span className="text-2xl">😐</span>
+              <span className="font-medium">
+                {feedbackType === 'success' ? 'Passt.' : 'Nope.'}
+              </span>
+            </div>
           )}
         </div>
       )

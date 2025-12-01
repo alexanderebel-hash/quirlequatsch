@@ -108,6 +108,30 @@ export default function SinusKosinusPage() {
         <p className="text-slate-500">Trigonometrie im allgemeinen Dreieck</p>
       </div>
 
+      {/* Lernvideo Section - PFLICHT! */}
+      <div className="bg-gradient-to-r from-[#5856D6] to-[#AF52DE] rounded-2xl p-5 mb-6 text-white">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-3xl">🎬</span>
+          <div>
+            <h3 className="font-bold text-xl">Lernvideo: Sinus & Kosinus</h3>
+            <p className="text-white/80 text-sm">Start hier. Verschafft dir den Überblick.</p>
+          </div>
+        </div>
+        <div className="bg-black/20 rounded-xl overflow-hidden">
+          <video 
+            src="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/lenny/Sinus-_%26_Kosinussatz.mp4"
+            controls
+            className="w-full"
+            preload="metadata"
+          >
+            Dein Browser unterstützt kein Video.
+          </video>
+        </div>
+        <p className="text-sm text-white/70 mt-3">
+          ⚡ Schau das Video, bevor du mit den Modulen startest
+        </p>
+      </div>
+
       {/* Podcast & PDF Section */}
       <div className="space-y-4 mb-6">
         {/* Podcast */}
@@ -165,22 +189,36 @@ export default function SinusKosinusPage() {
         </div>
       </div>
 
-      {/* LayLay Intro */}
-      <div className="bg-gradient-to-r from-[#FFB800] to-[#FF9500] rounded-2xl p-5 mb-6 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16" />
-        <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12" />
-        <div className="relative flex items-start gap-4">
-          <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0 backdrop-blur">
-            <span className="text-3xl">🦁</span>
-          </div>
-          <div className="flex-1">
-            <p className="font-bold text-lg mb-2">Yo Lenny! LayLay here 👋</p>
-            <p className="text-white/90 text-sm leading-relaxed">
-              Sinus- und Kosinussatz? Sounds scary, aber real talk: Das ist literally nur Pythagoras mit Extra-Steps. 
-              Wenn du die 6 Module durchziehst, bist du safe fürs Abi. No cap. Let's grind! 🔥
-            </p>
-          </div>
+      {/* Die Mathe-Bros Intro */}
+      <div className="grid grid-cols-3 gap-3 mb-6">
+        {/* Sinus-Sven */}
+        <div className="bg-[#007AFF] rounded-xl p-4 text-white text-center">
+          <div className="text-3xl mb-2">🧑‍🏫</div>
+          <p className="font-bold text-sm mb-1">Sinus-Sven</p>
+          <p className="text-xs text-white/70">Der Erklärer</p>
         </div>
+
+        {/* Cosinus-Carlo */}
+        <div className="bg-[#FF3B30] rounded-xl p-4 text-white text-center">
+          <div className="text-3xl mb-2">🤌</div>
+          <p className="font-bold text-sm mb-1">Cosinus-Carlo</p>
+          <p className="text-xs text-white/70">Der Italiener</p>
+        </div>
+
+        {/* Tangens-Torsten */}
+        <div className="bg-[#34C759] rounded-xl p-4 text-white text-center">
+          <div className="text-3xl mb-2">😐</div>
+          <p className="font-bold text-sm mb-1">Tangens-Torsten</p>
+          <p className="text-xs text-white/70">Der Trockene</p>
+        </div>
+      </div>
+
+      {/* Info Box */}
+      <div className="bg-slate-100 rounded-2xl p-4 mb-6">
+        <p className="text-sm text-slate-700">
+          <strong>Die Mathe-Bros helfen dir:</strong> Sven erklärt den Sinussatz, 
+          Carlo den Kosinussatz, Torsten gibt allgemeine Tipps.
+        </p>
       </div>
 
       {/* Progress Overview */}
