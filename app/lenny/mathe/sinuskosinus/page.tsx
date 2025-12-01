@@ -108,6 +108,63 @@ export default function SinusKosinusPage() {
         <p className="text-slate-500">Trigonometrie im allgemeinen Dreieck</p>
       </div>
 
+      {/* Podcast & PDF Section */}
+      <div className="space-y-4 mb-6">
+        {/* Podcast */}
+        <div className="bg-white rounded-2xl p-5 border border-slate-200">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-2xl">🎧</span>
+            <h3 className="font-bold text-slate-800">Podcast: Die universelle Dreiecksstrategie</h3>
+          </div>
+          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4">
+            <audio 
+              controls 
+              className="w-full"
+              preload="metadata"
+              style={{ height: '48px' }}
+            >
+              <source src="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/lenny/Sinus_Kosinussatz_Die_universelle_Dreiecksstrategie.m4a" type="audio/mp4" />
+              Dein Browser unterstützt kein Audio.
+            </audio>
+            <p className="text-xs text-purple-600 mt-2 text-center">
+              Sinus & Kosinus - Die universelle Dreiecksstrategie
+            </p>
+          </div>
+          <p className="text-sm text-slate-500 mt-3">
+            💡 Perfekt zum Hören vor dem Lernen - verschafft dir den Überblick
+          </p>
+        </div>
+
+        {/* PDF Guide */}
+        <div className="bg-white rounded-2xl p-5 border border-slate-200">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-2xl">📄</span>
+            <h3 className="font-bold text-slate-800">Der ultimative Anti-Mathe Guide</h3>
+          </div>
+          <a 
+            href="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/lenny/Der_ultimative_Anti-Mathe_Guide.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <div className="bg-gradient-to-r from-[#5856D6] to-[#AF52DE] rounded-xl p-4 text-white hover:opacity-90 transition-opacity">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-bold mb-1">PDF zum Download</p>
+                  <p className="text-sm text-white/80">Alle Formeln & Merkhilfen auf einen Blick</p>
+                </div>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+            </div>
+          </a>
+          <p className="text-sm text-slate-500 mt-3">
+            📱 Zum Ausdrucken oder auf dem Handy speichern
+          </p>
+        </div>
+      </div>
+
       {/* LayLay Intro */}
       <div className="bg-gradient-to-r from-[#FFB800] to-[#FF9500] rounded-2xl p-5 mb-6 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16" />
