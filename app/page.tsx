@@ -46,7 +46,7 @@ const kinder = [
     borderColor: 'border-blue-600',
     bgColor: 'bg-blue-50',
     description: 'Abi-Vorbereitung',
-    active: false,
+    active: true,
   },
 ];
 
