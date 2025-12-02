@@ -94,6 +94,19 @@ export default function LeniSozialkundePage() {
               <p className="text-sm text-gray-600">Visuelle Übersicht</p>
             </div>
           </a>
+
+          <a 
+            href="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/leni/sozialkunde/Die_Sa%CC%88ulen_der_Gerechtigkeit.mp4" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors"
+          >
+            <span className="text-2xl">🎬</span>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800">Video: Die Säulen der Gerechtigkeit</p>
+              <p className="text-sm text-gray-600">Erklärvideo zu den vier Dimensionen</p>
+            </div>
+          </a>
         </div>
       </div>
 
