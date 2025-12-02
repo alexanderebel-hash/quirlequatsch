@@ -124,7 +124,7 @@ export default function LeniHomePage() {
               <span className="text-2xl">⚖️</span>
             </div>
             <div className="flex-1">
-              <p className="font-semibold text-gray-800">Sozialkunde</p>
+              <p className="font-semibold text-gray-800">Politische Bildung</p>
               <p className="text-sm text-gray-500">Mit Lillebi 🦋 lernen</p>
             </div>
             <div className="text-right">

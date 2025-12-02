@@ -60,9 +60,41 @@ export default function LeniSozialkundePage() {
           <Scale className="w-8 h-8 text-orange-600" />
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-          🦋 Sozialkunde-Trainer
+          🦋 Politische Bildung
         </h1>
         <p className="text-gray-500">Mit Lillebi die Gesellschaft verstehen</p>
+      </div>
+
+      {/* Media Resources */}
+      <div className="bg-white rounded-2xl p-5 mb-6 border border-gray-100">
+        <h3 className="font-semibold text-gray-800 mb-3">📚 Lernmaterialien</h3>
+        <div className="space-y-3">
+          <a 
+            href="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/leni/sozialkunde/German_Social_Model_Foundations_to_Reality.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 bg-red-50 rounded-xl hover:bg-red-100 transition-colors"
+          >
+            <span className="text-2xl">📄</span>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800">PowerPoint als PDF</p>
+              <p className="text-sm text-gray-600">German Social Model - Foundations to Reality</p>
+            </div>
+          </a>
+          
+          <a 
+            href="https://we1ptd8elomh5s95.public.blob.vercel-storage.com/leni/sozialkunde/unnamed.png" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 p-3 bg-blue-50 rounded-xl hover:bg-blue-100 transition-colors"
+          >
+            <span className="text-2xl">📊</span>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800">Schaubild</p>
+              <p className="text-sm text-gray-600">Visuelle Übersicht</p>
+            </div>
+          </a>
+        </div>
       </div>
 
       {/* Lillebi Welcome */}
@@ -73,7 +105,7 @@ export default function LeniSozialkundePage() {
             <p className="font-semibold mb-1">Hallo Leni!</p>
             <p className="text-white/90 text-sm">
               Heute lernst du, wie Deutschland funktioniert: Sozialversicherung, Gerechtigkeit und Armut. 
-              Sozialkunde ist wichtig für dein Leben!
+              Politische Bildung ist wichtig für dein Leben!
             </p>
           </div>
         </div>
