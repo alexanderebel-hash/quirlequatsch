@@ -98,6 +98,25 @@ export default function MilanHomePage() {
         </Link>
       </div>
 
+      {/* Subject Cards */}
+      <div className="mt-6">
+        <h2 className="text-lg font-bold text-gray-700 mb-3">Deine Fächer</h2>
+        <Link href="/milan/englisch">
+          <div className="bg-white rounded-2xl p-4 shadow-sm border-2 border-blue-200 active:scale-[0.98] transition-transform">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl">
+                🇬🇧
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-800">English</h3>
+                <p className="text-sm text-gray-500">5. Klasse • 1 Unit verfügbar</p>
+              </div>
+              <span className="text-blue-500 text-2xl">›</span>
+            </div>
+          </div>
+        </Link>
+      </div>
+
       {/* Progress Stats */}
       <div className="mt-6 grid grid-cols-3 gap-3">
         <div className="bg-white rounded-2xl p-4 text-center shadow-sm border-2 border-green-200">
