@@ -1,5 +1,6 @@
 'use client';
 
+// Milan's English Learning Module - v1.0
 import Link from 'next/link';
 
 const modules = [
