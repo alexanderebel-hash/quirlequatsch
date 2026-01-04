@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Target, Brain, BarChart3, Calendar, ChevronRight } from 'lucide-react';
+import { Target, Brain, BarChart3, ChevronRight } from 'lucide-react';
 
 export default function LennyHomePage() {
   return (
@@ -50,9 +50,9 @@ export default function LennyHomePage() {
           <div>
             <p className="text-slate-300 text-sm">Empfohlen</p>
             <p className="font-semibold text-lg">Mathe-Session starten</p>
-            <p className="text-slate-400 text-sm">Quadratische Funktionen • 25 min</p>
+            <p className="text-slate-400 text-sm">Sinus- & Kosinussatz • 45 min</p>
           </div>
-          <Link href="/lenny/session/mathe">
+          <Link href="/lenny/mathe/sinuskosinus">
             <div className="bg-blue-600 hover:bg-blue-700 rounded-xl p-4 transition-colors">
               <Target className="w-6 h-6" />
             </div>
@@ -62,89 +62,35 @@ export default function LennyHomePage() {
 
       {/* Fächer - Compact List */}
       <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100 mb-6">
-        <Link href="/lenny/mathe" className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
+        <Link href="/lenny/mathe/sinuskosinus" className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
               <span className="text-lg">📊</span>
             </div>
             <div>
               <p className="font-medium text-slate-800">Mathematik</p>
-              <p className="text-xs text-slate-500">Analysis, Stochastik</p>
+              <p className="text-xs text-slate-500">Sinus- & Kosinussatz</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-blue-600 font-medium">72%</span>
-            <ChevronRight className="w-4 h-4 text-slate-400" />
-          </div>
-        </Link>
-
-        <Link href="/lenny/deutsch" className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-              <span className="text-lg">📖</span>
-            </div>
-            <div>
-              <p className="font-medium text-slate-800">Deutsch</p>
-              <p className="text-xs text-slate-500">Literatur, Erörterung</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-amber-600 font-medium">68%</span>
-            <ChevronRight className="w-4 h-4 text-slate-400" />
-          </div>
-        </Link>
-
-        <Link href="/lenny/englisch" className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-              <span className="text-lg">🇬🇧</span>
-            </div>
-            <div>
-              <p className="font-medium text-slate-800">Englisch</p>
-              <p className="text-xs text-slate-500">Advanced, Essay Writing</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-red-600 font-medium">81%</span>
-            <ChevronRight className="w-4 h-4 text-slate-400" />
-          </div>
-        </Link>
-
-        <Link href="/lenny/physik" className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-              <span className="text-lg">⚛️</span>
-            </div>
-            <div>
-              <p className="font-medium text-slate-800">Physik</p>
-              <p className="text-xs text-slate-500">Mechanik, E-Lehre</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-emerald-600 font-medium">54%</span>
+            <span className="text-sm text-blue-600 font-medium">0%</span>
             <ChevronRight className="w-4 h-4 text-slate-400" />
           </div>
         </Link>
       </div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-3">
-        <Link href="/lenny/test">
+      <div className="grid grid-cols-2 gap-3">
+        <Link href="/lenny/mathe/sinuskosinus/grundlagen">
           <div className="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-slate-300 hover:shadow-sm transition-all">
             <Brain className="w-6 h-6 mx-auto mb-1 text-slate-600" />
-            <p className="text-sm font-medium text-slate-700">Quiz</p>
+            <p className="text-sm font-medium text-slate-700">Grundlagen</p>
           </div>
         </Link>
-        <Link href="/lenny/stats">
+        <Link href="/lenny/mathe/sinuskosinus/simulation">
           <div className="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-slate-300 hover:shadow-sm transition-all">
             <BarChart3 className="w-6 h-6 mx-auto mb-1 text-slate-600" />
-            <p className="text-sm font-medium text-slate-700">Stats</p>
-          </div>
-        </Link>
-        <Link href="/lenny/plan">
-          <div className="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-slate-300 hover:shadow-sm transition-all">
-            <Calendar className="w-6 h-6 mx-auto mb-1 text-slate-600" />
-            <p className="text-sm font-medium text-slate-700">Plan</p>
+            <p className="text-sm font-medium text-slate-700">Simulation</p>
           </div>
         </Link>
       </div>

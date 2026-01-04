@@ -129,6 +129,29 @@ export default function LeniFranzoesischPage() {
         </div>
       </div>
 
+      {/* Interview Module - Prüfungsvorbereitung */}
+      <Link href="/leni/franzoesisch/interview">
+        <div className="bg-gradient-to-r from-red-500 via-white to-blue-600 rounded-2xl p-1 mb-6 hover:shadow-xl transition-shadow active:scale-[0.98]">
+          <div className="bg-white rounded-xl p-5">
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-xl flex items-center justify-center text-2xl">
+                🇫🇷
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-gray-800 text-lg">Se présenter – Mündliche Prüfung</h3>
+                <p className="text-sm text-gray-600">Partner-Interview Vorbereitung</p>
+              </div>
+              <span className="text-red-600 text-2xl">→</span>
+            </div>
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-r-xl p-3">
+              <p className="text-yellow-800 text-sm">
+                <span className="font-semibold">📝 Prüfungsformat:</span> Fragen stellen & Antworten geben
+              </p>
+            </div>
+          </div>
+        </div>
+      </Link>
+
       {/* Kategorien */}
       <div className="bg-white rounded-2xl p-5 mb-6 border border-gray-100">
         <h2 className="font-semibold text-gray-800 mb-3">📚 Kategorien</h2>

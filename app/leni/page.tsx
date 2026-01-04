@@ -70,22 +70,6 @@ export default function LeniHomePage() {
           </div>
         </Link>
 
-        <Link href="/leni/uebungen?fach=mathe">
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">📐</span>
-            </div>
-            <div className="flex-1">
-              <p className="font-semibold text-gray-800">Mathematik</p>
-              <p className="text-sm text-gray-500">Algebra, Geometrie, Terme</p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm font-medium text-blue-600">78%</p>
-              <p className="text-xs text-gray-400">Fortschritt</p>
-            </div>
-          </div>
-        </Link>
-
         <Link href="/leni/physik/dichte">
           <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
             <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
@@ -97,22 +81,6 @@ export default function LeniHomePage() {
             </div>
             <div className="text-right">
               <p className="text-sm font-medium text-teal-600">0%</p>
-              <p className="text-xs text-gray-400">Fortschritt</p>
-            </div>
-          </div>
-        </Link>
-
-        <Link href="/leni/englisch">
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
-              <span className="text-2xl">🇬🇧</span>
-            </div>
-            <div className="flex-1">
-              <p className="font-semibold text-gray-800">Englisch</p>
-              <p className="text-sm text-gray-500">Zeitformen mit K-POP lernen</p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm font-medium text-indigo-600">0%</p>
               <p className="text-xs text-gray-400">Fortschritt</p>
             </div>
           </div>
@@ -153,16 +121,16 @@ export default function LeniHomePage() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-2 gap-3">
-        <Link href="/leni/test">
+        <Link href="/leni/bio/quiz">
           <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-5 text-white text-center hover:shadow-lg transition-shadow">
             <Brain className="w-8 h-8 mx-auto mb-2" />
-            <p className="font-semibold">Quiz starten</p>
+            <p className="font-semibold">Bio-Quiz</p>
           </div>
         </Link>
-        <Link href="/leni/profil">
+        <Link href="/leni/franzoesisch/quiz">
           <div className="bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl p-5 text-white text-center hover:shadow-lg transition-shadow">
             <Award className="w-8 h-8 mx-auto mb-2" />
-            <p className="font-semibold">Achievements</p>
+            <p className="font-semibold">Franz.-Quiz</p>
           </div>
         </Link>
       </div>

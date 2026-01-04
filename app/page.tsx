@@ -5,17 +5,6 @@ import { motion } from 'framer-motion';
 
 const kinder = [
   {
-    id: 'lilly',
-    name: 'Lilly',
-    klasse: '4. Klasse',
-    mascot: '🦄',
-    weltName: "Lilly's Zauber-Lernwelt",
-    borderColor: 'border-pink-500',
-    bgColor: 'bg-pink-50',
-    description: 'Lesen, Schreiben, Rechnen',
-    active: false,
-  },
-  {
     id: 'milan',
     name: 'Milan',
     klasse: '5. Klasse',
@@ -23,7 +12,7 @@ const kinder = [
     weltName: "Capitano's Lernwelt",
     borderColor: 'border-green-500',
     bgColor: 'bg-green-50',
-    description: 'Biologie & NaWi',
+    description: 'Englisch',
     active: true,
   },
   {
@@ -34,7 +23,7 @@ const kinder = [
     weltName: "Leni's Lernlounge",
     borderColor: 'border-purple-500',
     bgColor: 'bg-purple-50',
-    description: 'Mathe & Englisch',
+    description: 'Bio, Physik, Franz., Sozi',
     active: true,
   },
   {
@@ -45,7 +34,7 @@ const kinder = [
     weltName: "Lenny's Study Hub",
     borderColor: 'border-blue-600',
     bgColor: 'bg-blue-50',
-    description: 'Abi-Vorbereitung',
+    description: 'Mathe',
     active: true,
   },
 ];

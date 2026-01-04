@@ -46,7 +46,7 @@ export default function MilanHomePage() {
 
       {/* Mission Buttons */}
       <div className="space-y-4">
-        <Link href="/milan/uebungen">
+        <Link href="/milan/englisch/morning/spiele">
           <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-green-400">
             <div className="flex items-center justify-between">
               <div className="flex-1">
@@ -63,7 +63,7 @@ export default function MilanHomePage() {
           </div>
         </Link>
 
-        <Link href="/milan/lernen">
+        <Link href="/milan/englisch/morning">
           <div className="bg-gradient-to-r from-blue-500 to-cyan-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-blue-400">
             <div className="flex items-center justify-between">
               <div className="flex-1">
@@ -71,7 +71,7 @@ export default function MilanHomePage() {
                   <span className="text-4xl md:text-5xl">🧠</span>
                   <div>
                     <p className="font-bold text-xl md:text-2xl">Neues Thema lernen</p>
-                    <p className="text-blue-100 text-sm md:text-base">Entdecke neue Inhalte</p>
+                    <p className="text-blue-100 text-sm md:text-base">In the Morning</p>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function MilanHomePage() {
           </div>
         </Link>
 
-        <Link href="/milan/test">
+        <Link href="/milan/englisch/morning/test">
           <div className="bg-gradient-to-r from-purple-500 to-violet-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-purple-400">
             <div className="flex items-center justify-between">
               <div className="flex-1">
@@ -88,7 +88,7 @@ export default function MilanHomePage() {
                   <span className="text-4xl md:text-5xl">🏆</span>
                   <div>
                     <p className="font-bold text-xl md:text-2xl">Test starten</p>
-                    <p className="text-purple-100 text-sm md:text-base">Prüfe dein Wissen</p>
+                    <p className="text-purple-100 text-sm md:text-base">Klassenarbeit üben</p>
                   </div>
                 </div>
               </div>
