@@ -199,20 +199,20 @@ export default function SpielePage() {
 
         {/* Memory Game */}
         {game === 'memory' && (
-          <div>
-            <div className="flex justify-between items-center mb-4">
+          <div className="max-w-md mx-auto">
+            <div className="flex justify-between items-center mb-3">
               <button onClick={() => setGame('menu')} className="text-pink-600 text-sm">
                 ← Zurück
               </button>
-              <span className="font-bold">{matched.length / 2} / {memoryPairs.length} Paare</span>
+              <span className="font-bold text-sm">{matched.length / 2} / {memoryPairs.length} Paare</span>
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-4 gap-2">
               {memoryCards.map((card) => (
                 <button
                   key={card.id}
                   onClick={() => handleMemoryClick(card.id)}
-                  className={`aspect-square rounded-xl p-2 text-xs font-medium transition-all flex items-center justify-center text-center ${
+                  className={`h-16 sm:h-20 rounded-lg p-1 text-[10px] sm:text-xs font-medium transition-all flex items-center justify-center text-center leading-tight ${
                     flipped.includes(card.id) || matched.includes(card.id)
                       ? 'bg-pink-500 text-white'
                       : 'bg-pink-100 text-pink-100'
@@ -224,13 +224,13 @@ export default function SpielePage() {
             </div>
 
             {matched.length === memoryCards.length && (
-              <div className="mt-6 text-center">
-                <span className="text-5xl">🎉</span>
-                <p className="font-bold text-lg mt-2">Alle Paare gefunden!</p>
-                <p className="text-pink-600">+30 XP</p>
-                <button 
+              <div className="mt-4 text-center">
+                <span className="text-4xl">🎉</span>
+                <p className="font-bold mt-2">Alle Paare gefunden!</p>
+                <p className="text-pink-600 text-sm">+30 XP</p>
+                <button
                   onClick={() => setGame('menu')}
-                  className="mt-4 px-6 py-3 bg-pink-500 text-white rounded-xl font-semibold"
+                  className="mt-3 px-5 py-2 bg-pink-500 text-white rounded-xl font-semibold text-sm"
                 >
                   Zurück zum Menü
                 </button>
