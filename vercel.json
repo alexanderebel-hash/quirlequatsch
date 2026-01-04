@@ -2,6 +2,5 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": ".next",
-  "_comment": "Physics module deployed 2026-01-04"
+  "outputDirectory": ".next"
 }
