@@ -95,7 +95,7 @@ export default function TestPage() {
   };
 
   const calculateScore = (): number => {
-    return answers.reduce((score, answer, i) => {
+    return answers.reduce<number>((score, answer, i) => {
       if (answer === null) return score;
       return score + (answer === testQuestions[i].correct ? 1 : 0);
     }, 0);
