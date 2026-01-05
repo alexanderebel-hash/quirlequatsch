@@ -1,148 +1,145 @@
 'use client';
 
 import Link from 'next/link';
-import { Zap, Trophy, Target, TrendingUp } from 'lucide-react';
+import { Zap, Flame, ChevronRight, Play, Trophy } from 'lucide-react';
 
 export default function MilanHomePage() {
   return (
-    <div className="px-4 md:px-6 lg:px-8 py-4">
+    <div className="px-4 md:px-6 lg:px-8 py-4 max-w-2xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-6">
-        <span className="text-6xl md:text-7xl lg:text-8xl block mb-2">🦖</span>
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600 mb-1">
-          Bereit, Capitano?
-        </h1>
-        <p className="text-green-500 text-lg">
-          Los geht's!
-        </p>
-      </div>
-
-      {/* XP & Level Display */}
-      <div className="flex justify-center gap-4 mb-6">
-        <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl px-5 py-3 flex items-center gap-2 shadow-lg">
-          <Zap className="w-6 h-6 text-yellow-300 fill-yellow-300" />
-          <div className="text-white">
-            <p className="text-xs font-medium">XP</p>
-            <p className="text-xl font-bold">2,547</p>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <span className="text-4xl">🦖</span>
+          <div>
+            <h1 className="text-xl font-bold text-gray-800">Hey Capitano!</h1>
+            <p className="text-gray-500 text-sm">Los geht's!</p>
           </div>
         </div>
-        <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl px-5 py-3 flex items-center gap-2 shadow-lg">
-          <Trophy className="w-6 h-6 text-white" />
-          <div className="text-white">
-            <p className="text-xs font-medium">Level</p>
-            <p className="text-xl font-bold">8</p>
+        <div className="flex items-center gap-2">
+          <div className="bg-green-100 rounded-full px-3 py-1.5 flex items-center gap-1">
+            <Zap className="w-4 h-4 text-green-600" />
+            <span className="font-bold text-green-700 text-sm">2547</span>
+          </div>
+          <div className="bg-orange-100 rounded-full px-3 py-1.5 flex items-center gap-1">
+            <Flame className="w-4 h-4 text-orange-500" />
+            <span className="font-bold text-orange-600 text-sm">7</span>
           </div>
         </div>
       </div>
 
-      {/* Achievement Streak */}
-      <div className="bg-gradient-to-r from-green-100 via-emerald-100 to-green-100 rounded-3xl p-5 md:p-6 mb-6 text-center border-2 border-green-300 shadow-sm">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <span className="text-3xl">🔥</span>
-          <p className="text-2xl font-bold text-green-700">7 Tage in Folge</p>
+      {/* Streak-Banner */}
+      <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-xl p-3 mb-4 text-white flex items-center gap-3">
+        <Flame className="w-6 h-6" />
+        <div className="flex-1">
+          <p className="font-medium text-sm">7 Tage in Folge! 🔥</p>
+          <p className="text-orange-100 text-xs">Super, weiter so!</p>
         </div>
-        <p className="text-green-600 font-medium">Super, weiter so!</p>
       </div>
 
-      {/* Mission Buttons */}
-      <div className="space-y-4">
-        <Link href="/milan/englisch/morning/spiele">
-          <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-green-400">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-4xl md:text-5xl">💪</span>
-                  <div>
-                    <p className="font-bold text-xl md:text-2xl">Übung starten</p>
-                    <p className="text-green-100 text-sm md:text-base">Sammle Punkte</p>
-                  </div>
+      {/* HAUPT-CTA: Weiter lernen */}
+      <Link href="/milan/englisch/morning">
+        <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-5 mb-6 text-white shadow-lg hover:shadow-xl transition-shadow active:scale-[0.98]">
+          <div className="flex items-center justify-between">
+            <div className="flex-1">
+              <p className="text-green-200 text-xs font-medium mb-1">WEITER LERNEN</p>
+              <p className="font-bold text-xl mb-1">🇬🇧 English</p>
+              <p className="text-green-200 text-sm">Unit 2: In the Morning</p>
+              <div className="mt-3 flex items-center gap-2">
+                <div className="flex-1 h-2 bg-white/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-white rounded-full w-[50%]" />
                 </div>
+                <span className="text-xs font-medium">3/6</span>
               </div>
-              <Target className="w-8 h-8 text-green-200" />
+            </div>
+            <div className="ml-4">
+              <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <Play className="w-7 h-7 text-white fill-white" />
+              </div>
             </div>
           </div>
-        </Link>
+        </div>
+      </Link>
 
-        <Link href="/milan/englisch/morning">
-          <div className="bg-gradient-to-r from-blue-500 to-cyan-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-blue-400">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-4xl md:text-5xl">🧠</span>
-                  <div>
-                    <p className="font-bold text-xl md:text-2xl">Neues Thema lernen</p>
-                    <p className="text-blue-100 text-sm md:text-base">In the Morning</p>
-                  </div>
-                </div>
-              </div>
-              <TrendingUp className="w-8 h-8 text-blue-200" />
+      {/* Lernpfad */}
+      <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+        Dein Lernpfad
+      </h2>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 divide-y divide-gray-100">
+        <Link href="/milan/englisch/morning/body">
+          <div className="p-3 flex items-center gap-3 hover:bg-gray-50">
+            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800 text-sm">The Body</p>
+              <p className="text-xs text-gray-500">Körperteile</p>
             </div>
+            <span className="text-green-500 text-xs font-medium">Fertig!</span>
           </div>
         </Link>
-
-        <Link href="/milan/englisch/morning/test">
-          <div className="bg-gradient-to-r from-purple-500 to-violet-600 rounded-3xl p-6 md:p-8 text-white shadow-xl active:scale-[0.98] transition-transform border-2 border-purple-400">
-            <div className="flex items-center justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-4xl md:text-5xl">🏆</span>
-                  <div>
-                    <p className="font-bold text-xl md:text-2xl">Test starten</p>
-                    <p className="text-purple-100 text-sm md:text-base">Klassenarbeit üben</p>
-                  </div>
-                </div>
-              </div>
-              <Trophy className="w-8 h-8 text-purple-200" />
+        <Link href="/milan/englisch/morning/adjektive">
+          <div className="p-3 flex items-center gap-3 hover:bg-gray-50">
+            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800 text-sm">Adjectives</p>
+              <p className="text-xs text-gray-500">Beschreibungen</p>
             </div>
+            <span className="text-green-500 text-xs font-medium">Fertig!</span>
           </div>
         </Link>
+        <Link href="/milan/englisch/morning/have-got">
+          <div className="p-3 flex items-center gap-3 hover:bg-gray-50">
+            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800 text-sm">Have Got</p>
+              <p className="text-xs text-gray-500">Besitz ausdrücken</p>
+            </div>
+            <span className="text-green-500 text-xs font-medium">Fertig!</span>
+          </div>
+        </Link>
+        <Link href="/milan/englisch/morning/breakfast">
+          <div className="p-3 flex items-center gap-3 hover:bg-gray-50 bg-green-50">
+            <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white text-sm font-bold">4</div>
+            <div className="flex-1">
+              <p className="font-medium text-gray-800 text-sm">Breakfast</p>
+              <p className="text-xs text-green-600 font-medium">Jetzt lernen!</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-green-600" />
+          </div>
+        </Link>
+        <div className="p-3 flex items-center gap-3 opacity-50">
+          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white text-sm font-bold">5</div>
+          <div className="flex-1">
+            <p className="font-medium text-gray-500 text-sm">Questions</p>
+            <p className="text-xs text-gray-400">Noch gesperrt</p>
+          </div>
+          <span className="text-lg">🔒</span>
+        </div>
+        <div className="p-3 flex items-center gap-3 opacity-50">
+          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-white text-sm font-bold">6</div>
+          <div className="flex-1">
+            <p className="font-medium text-gray-500 text-sm">Spiele & Test</p>
+            <p className="text-xs text-gray-400">Nach allen Modulen</p>
+          </div>
+          <span className="text-lg">🔒</span>
+        </div>
       </div>
 
-      {/* Subject Cards */}
-      <div className="mt-6">
-        <h2 className="text-lg font-bold text-gray-700 mb-3">Deine Fächer</h2>
-        <Link href="/milan/englisch">
-          <div className="bg-white rounded-2xl p-4 shadow-sm border-2 border-blue-200 active:scale-[0.98] transition-transform">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl">
-                🇬🇧
-              </div>
-              <div className="flex-1">
-                <h3 className="font-bold text-gray-800">English</h3>
-                <p className="text-sm text-gray-500">5. Klasse • 1 Unit verfügbar</p>
-              </div>
-              <span className="text-blue-500 text-2xl">›</span>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      {/* Progress Stats */}
-      <div className="mt-6 grid grid-cols-3 gap-3">
-        <div className="bg-white rounded-2xl p-4 text-center shadow-sm border-2 border-green-200">
-          <p className="text-2xl font-bold text-green-600">156</p>
-          <p className="text-xs text-gray-500">Aufgaben</p>
+      {/* Level & Stats */}
+      <div className="mt-6 grid grid-cols-3 gap-2">
+        <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-gray-100">
+          <Trophy className="w-5 h-5 text-amber-500 mx-auto mb-1" />
+          <p className="text-lg font-bold text-gray-800">8</p>
+          <p className="text-[10px] text-gray-500">Level</p>
         </div>
-        <div className="bg-white rounded-2xl p-4 text-center shadow-sm border-2 border-amber-200">
-          <p className="text-2xl font-bold text-amber-600">24</p>
-          <p className="text-xs text-gray-500">Badges</p>
+        <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-gray-100">
+          <span className="text-lg">🎯</span>
+          <p className="text-lg font-bold text-gray-800">89%</p>
+          <p className="text-[10px] text-gray-500">Erfolg</p>
         </div>
-        <div className="bg-white rounded-2xl p-4 text-center shadow-sm border-2 border-blue-200">
-          <p className="text-2xl font-bold text-blue-600">89%</p>
-          <p className="text-xs text-gray-500">Erfolg</p>
+        <div className="bg-white rounded-xl p-3 text-center shadow-sm border border-gray-100">
+          <span className="text-lg">⭐</span>
+          <p className="text-lg font-bold text-gray-800">24</p>
+          <p className="text-[10px] text-gray-500">Badges</p>
         </div>
-      </div>
-
-      {/* Level Progress */}
-      <div className="mt-6 bg-white rounded-3xl p-5 shadow-sm border-2 border-green-200">
-        <div className="flex items-center justify-between mb-3">
-          <p className="font-bold text-gray-700 text-lg">Level 8 → Level 9</p>
-          <p className="text-sm text-green-600 font-bold">547 / 1000 XP</p>
-        </div>
-        <div className="h-5 bg-green-100 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full w-[54.7%]" />
-        </div>
-        <p className="text-sm text-gray-500 mt-2 text-center">Noch 453 XP bis Level 9! 🚀</p>
       </div>
     </div>
   );

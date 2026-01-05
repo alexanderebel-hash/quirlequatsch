@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Check, X, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Check, X, ChevronRight, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
@@ -62,17 +62,25 @@ export default function LeniQuizPage() {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [score, setScore] = useState(0);
+  const [xp, setXp] = useState(0);
+  const [lastGain, setLastGain] = useState(0);
+  const [showGain, setShowGain] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 
   const question = quizData[currentQuestion];
+  const XP_PER_CORRECT = 15;
 
   const handleAnswer = (index: number) => {
     if (isAnswered) return;
     setSelectedAnswer(index);
     setIsAnswered(true);
-    
+
     if (index === question.correct) {
       setScore(prev => prev + 1);
+      setXp(prev => prev + XP_PER_CORRECT);
+      setLastGain(XP_PER_CORRECT);
+      setShowGain(true);
+      setTimeout(() => setShowGain(false), 1000);
       confetti({ particleCount: 30, spread: 60, origin: { y: 0.7 } });
     }
   };
@@ -95,6 +103,8 @@ export default function LeniQuizPage() {
     setSelectedAnswer(null);
     setIsAnswered(false);
     setScore(0);
+    setXp(0);
+    setLastGain(0);
     setIsFinished(false);
   };
 
@@ -104,8 +114,15 @@ export default function LeniQuizPage() {
       <div className="px-4 md:px-6 lg:px-8 py-4 max-w-2xl mx-auto text-center">
         <div className="text-6xl mb-4">{percent >= 80 ? '🌟' : percent >= 60 ? '👍' : '💪'}</div>
         <h1 className="text-2xl font-bold mb-2">{score} von {quizData.length} richtig!</h1>
+
+        {/* XP Earned Display */}
+        <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-4 py-2 mb-4">
+          <Zap className="w-5 h-5 text-purple-600" />
+          <span className="font-bold text-purple-700 text-lg">+{xp} XP verdient!</span>
+        </div>
+
         <p className="text-gray-500 mb-6">{percent}% - {percent >= 80 ? 'Super!' : percent >= 60 ? 'Gut gemacht!' : 'Weiter üben!'}</p>
-        
+
         <div className="space-y-3">
           <button onClick={restart} className="w-full py-4 bg-purple-500 text-white rounded-xl font-bold hover:bg-purple-600 transition-colors">
             🔄 Nochmal spielen
@@ -128,7 +145,17 @@ export default function LeniQuizPage() {
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <span className="font-medium text-gray-700">Frage {currentQuestion + 1}/{quizData.length}</span>
-        <span className="text-emerald-600 font-bold">{score} ✓</span>
+        <div className="relative">
+          <div className={`flex items-center gap-1.5 bg-purple-100 rounded-full px-3 py-1.5 transition-transform ${showGain ? 'scale-110' : 'scale-100'}`}>
+            <Zap className="w-4 h-4 text-purple-600" />
+            <span className="font-bold text-purple-700">{xp}</span>
+          </div>
+          {showGain && (
+            <span className="absolute -top-4 right-0 text-purple-500 font-bold text-sm animate-bounce">
+              +{lastGain}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Progress */}

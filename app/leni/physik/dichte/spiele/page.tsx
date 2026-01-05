@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { Zap } from 'lucide-react';
 
 const materials = [
   { name: 'Styropor', density: 0.03, emoji: '📦' },
@@ -27,17 +28,19 @@ type GameType = 'menu' | 'swim-sink' | 'memory' | 'sorting';
 
 export default function SpielePage() {
   const [game, setGame] = useState<GameType>('menu');
-  
+
   // Swim/Sink state
   const [swimIndex, setSwimIndex] = useState(0);
   const [swimScore, setSwimScore] = useState(0);
   const [swimFeedback, setSwimFeedback] = useState<string | null>(null);
   const [shuffledMaterials, setShuffledMaterials] = useState(materials);
-  
+  const [showXpGain, setShowXpGain] = useState(false);
+
   // Memory state
   const [memoryCards, setMemoryCards] = useState<any[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
+  const [memoryXp, setMemoryXp] = useState(0);
 
   // Start Swim/Sink
   const startSwimSink = () => {
@@ -51,13 +54,17 @@ export default function SpielePage() {
   const handleSwimAnswer = (answer: 'swim' | 'sink') => {
     const material = shuffledMaterials[swimIndex];
     const correct = (answer === 'swim' && material.density < 1) || (answer === 'sink' && material.density >= 1);
-    
-    setSwimFeedback(correct 
-      ? `✓ Richtig! ${material.name}: ρ = ${material.density} g/cm³` 
+
+    setSwimFeedback(correct
+      ? `✓ Richtig! ${material.name}: ρ = ${material.density} g/cm³`
       : `✗ Falsch! ${material.name}: ρ = ${material.density} g/cm³`
     );
-    if (correct) setSwimScore(swimScore + 10);
-    
+    if (correct) {
+      setSwimScore(swimScore + 10);
+      setShowXpGain(true);
+      setTimeout(() => setShowXpGain(false), 800);
+    }
+
     setTimeout(() => {
       setSwimFeedback(null);
       if (swimIndex < shuffledMaterials.length - 1) {
@@ -75,12 +82,13 @@ export default function SpielePage() {
     setMemoryCards(cards);
     setFlipped([]);
     setMatched([]);
+    setMemoryXp(0);
     setGame('memory');
   };
 
   const handleMemoryClick = (cardId: number) => {
     if (flipped.length === 2 || flipped.includes(cardId) || matched.includes(cardId)) return;
-    
+
     const newFlipped = [...flipped, cardId];
     setFlipped(newFlipped);
 
@@ -88,6 +96,7 @@ export default function SpielePage() {
       const [first, second] = newFlipped.map(id => memoryCards.find(c => c.id === id));
       if (first?.pairId === second?.pairId) {
         setMatched([...matched, first.id, second.id]);
+        setMemoryXp(prev => prev + 5); // +5 XP pro Paar
       }
       setTimeout(() => setFlipped([]), 1000);
     }
@@ -152,7 +161,17 @@ export default function SpielePage() {
               <button onClick={() => setGame('menu')} className="text-pink-600 text-sm">
                 ← Zurück
               </button>
-              <span className="font-bold text-pink-600">{swimScore} XP</span>
+              <div className="relative">
+                <div className={`flex items-center gap-1.5 bg-pink-100 rounded-full px-3 py-1.5 transition-transform ${showXpGain ? 'scale-110' : 'scale-100'}`}>
+                  <Zap className="w-4 h-4 text-pink-600" />
+                  <span className="font-bold text-pink-700">{swimScore}</span>
+                </div>
+                {showXpGain && (
+                  <span className="absolute -top-4 right-0 text-pink-500 font-bold text-sm animate-bounce">
+                    +10
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="bg-white rounded-2xl p-6 shadow-lg border text-center mb-4">
@@ -204,7 +223,13 @@ export default function SpielePage() {
               <button onClick={() => setGame('menu')} className="text-pink-600 text-sm">
                 ← Zurück
               </button>
-              <span className="font-bold text-sm">{matched.length / 2} / {memoryPairs.length} Paare</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-500">{matched.length / 2} / {memoryPairs.length}</span>
+                <div className="flex items-center gap-1.5 bg-pink-100 rounded-full px-3 py-1.5">
+                  <Zap className="w-4 h-4 text-pink-600" />
+                  <span className="font-bold text-pink-700">{memoryXp}</span>
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-4 gap-2">
@@ -227,10 +252,13 @@ export default function SpielePage() {
               <div className="mt-4 text-center">
                 <span className="text-4xl">🎉</span>
                 <p className="font-bold mt-2">Alle Paare gefunden!</p>
-                <p className="text-pink-600 text-sm">+30 XP</p>
+                <div className="inline-flex items-center gap-2 bg-pink-100 rounded-full px-4 py-2 mt-2">
+                  <Zap className="w-5 h-5 text-pink-600" />
+                  <span className="font-bold text-pink-700 text-lg">+{memoryXp} XP verdient!</span>
+                </div>
                 <button
                   onClick={() => setGame('menu')}
-                  className="mt-3 px-5 py-2 bg-pink-500 text-white rounded-xl font-semibold text-sm"
+                  className="mt-4 px-5 py-2 bg-pink-500 text-white rounded-xl font-semibold text-sm block mx-auto"
                 >
                   Zurück zum Menü
                 </button>

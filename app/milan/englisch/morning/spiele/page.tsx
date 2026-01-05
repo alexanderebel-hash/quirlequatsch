@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { Zap } from 'lucide-react';
 
 // Memory Game Data
 const memoryPairs = [
@@ -36,12 +37,15 @@ export default function SpielePage() {
   const [memoryCards, setMemoryCards] = useState<any[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
+  const [memoryXp, setMemoryXp] = useState(0);
+  const [showMemoryXpGain, setShowMemoryXpGain] = useState(false);
   
   // Speed Quiz State
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [speedScore, setSpeedScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(60);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [showSpeedXpGain, setShowSpeedXpGain] = useState(false);
 
   // Initialize Memory Game
   const startMemory = () => {
@@ -52,13 +56,14 @@ export default function SpielePage() {
     setMemoryCards(cards);
     setFlipped([]);
     setMatched([]);
+    setMemoryXp(0);
     setGame('memory');
   };
 
   // Memory Card Click
   const handleCardClick = (cardId: number) => {
     if (flipped.length === 2 || flipped.includes(cardId) || matched.includes(cardId)) return;
-    
+
     const newFlipped = [...flipped, cardId];
     setFlipped(newFlipped);
 
@@ -66,6 +71,9 @@ export default function SpielePage() {
       const [first, second] = newFlipped.map(id => memoryCards.find(c => c.id === id));
       if (first?.pairId === second?.pairId) {
         setMatched([...matched, first.id, second.id]);
+        setMemoryXp(prev => prev + 5);
+        setShowMemoryXpGain(true);
+        setTimeout(() => setShowMemoryXpGain(false), 800);
       }
       setTimeout(() => setFlipped([]), 1000);
     }
@@ -85,6 +93,8 @@ export default function SpielePage() {
   const handleSpeedAnswer = (answer: string) => {
     if (answer === speedQuestions[currentQuestion].answer) {
       setSpeedScore(speedScore + 10);
+      setShowSpeedXpGain(true);
+      setTimeout(() => setShowSpeedXpGain(false), 500);
     }
     if (currentQuestion < speedQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -155,9 +165,22 @@ export default function SpielePage() {
         {/* Memory Game */}
         {game === 'memory' && (
           <div>
-            <div className="flex justify-between mb-4">
+            <div className="flex justify-between items-center mb-4">
               <button onClick={() => setGame('menu')} className="text-purple-600">← Zurück</button>
-              <span className="font-bold">{matched.length / 2} / {memoryPairs.length} Paare</span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-500">{matched.length / 2} / {memoryPairs.length}</span>
+                <div className="relative">
+                  <div className={`flex items-center gap-1.5 bg-green-100 rounded-full px-3 py-1.5 transition-transform ${showMemoryXpGain ? 'scale-110' : 'scale-100'}`}>
+                    <Zap className="w-4 h-4 text-green-600" />
+                    <span className="font-bold text-green-700">{memoryXp}</span>
+                  </div>
+                  {showMemoryXpGain && (
+                    <span className="absolute -top-4 right-0 text-green-500 font-bold text-sm animate-bounce">
+                      +5
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="grid grid-cols-3 gap-2">
@@ -180,10 +203,13 @@ export default function SpielePage() {
               <div className="mt-6 text-center">
                 <span className="text-4xl">🎉</span>
                 <p className="font-bold text-lg mt-2">Geschafft!</p>
-                <p className="text-purple-600">+30 XP</p>
+                <div className="inline-flex items-center gap-2 bg-green-100 rounded-full px-4 py-2 mt-2">
+                  <Zap className="w-5 h-5 text-green-600" />
+                  <span className="font-bold text-green-700 text-lg">+{memoryXp} XP verdient!</span>
+                </div>
                 <button
                   onClick={() => setGame('menu')}
-                  className="mt-4 px-6 py-3 bg-purple-500 text-white rounded-xl"
+                  className="mt-4 px-6 py-3 bg-green-500 text-white rounded-xl block mx-auto"
                 >
                   Zurück zum Menü
                 </button>
@@ -195,9 +221,19 @@ export default function SpielePage() {
         {/* Speed Quiz */}
         {game === 'speed-quiz' && !quizFinished && (
           <div>
-            <div className="flex justify-between mb-4">
+            <div className="flex justify-between items-center mb-4">
               <span className="text-2xl">⏱️ {timeLeft}s</span>
-              <span className="font-bold text-purple-600">{speedScore} XP</span>
+              <div className="relative">
+                <div className={`flex items-center gap-1.5 bg-green-100 rounded-full px-3 py-1.5 transition-transform ${showSpeedXpGain ? 'scale-110' : 'scale-100'}`}>
+                  <Zap className="w-4 h-4 text-green-600" />
+                  <span className="font-bold text-green-700">{speedScore}</span>
+                </div>
+                {showSpeedXpGain && (
+                  <span className="absolute -top-4 right-0 text-green-500 font-bold text-sm animate-bounce">
+                    +10
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="bg-white rounded-2xl p-6 shadow-sm border mb-4">
@@ -225,11 +261,14 @@ export default function SpielePage() {
           <div className="text-center py-8">
             <span className="text-6xl mb-4 block">🏆</span>
             <h2 className="text-2xl font-bold mb-2">Zeit vorbei!</h2>
-            <p className="text-purple-600 text-xl mb-6">Du hast {speedScore} XP erreicht!</p>
-            
-            <div className="bg-purple-100 rounded-xl p-4 mb-6">
+            <div className="inline-flex items-center gap-2 bg-green-100 rounded-full px-4 py-2 mb-4">
+              <Zap className="w-5 h-5 text-green-600" />
+              <span className="font-bold text-green-700 text-lg">+{speedScore} XP verdient!</span>
+            </div>
+
+            <div className="bg-green-50 rounded-xl p-4 mb-6">
               <span className="text-2xl">🚀</span>
-              <p className="text-purple-800 mt-2">
+              <p className="text-green-800 mt-2">
                 {speedScore >= 60 ? '"GG! Das war Profi-Level!"' : '"Gut gespielt! Übung macht den Meister!"'}
               </p>
             </div>
@@ -237,13 +276,13 @@ export default function SpielePage() {
             <div className="flex gap-3">
               <button
                 onClick={startSpeedQuiz}
-                className="flex-1 py-3 border-2 border-purple-500 text-purple-600 rounded-xl font-medium"
+                className="flex-1 py-3 border-2 border-green-500 text-green-600 rounded-xl font-medium"
               >
                 Nochmal
               </button>
               <button
                 onClick={() => setGame('menu')}
-                className="flex-1 py-3 bg-purple-500 text-white rounded-xl font-medium"
+                className="flex-1 py-3 bg-green-500 text-white rounded-xl font-medium"
               >
                 Menü
               </button>

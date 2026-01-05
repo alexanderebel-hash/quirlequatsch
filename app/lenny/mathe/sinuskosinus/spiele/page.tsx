@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { Zap } from 'lucide-react';
 
 // Memory Game
 const memoryPairs = [
@@ -35,11 +36,14 @@ export default function SpielePage() {
   const [speedScore, setSpeedScore] = useState(0);
   const [speedTime, setSpeedTime] = useState(0);
   const [speedStarted, setSpeedStarted] = useState(false);
+  const [showSpeedXpGain, setShowSpeedXpGain] = useState(false);
 
   // Memory State
   const [memoryCards, setMemoryCards] = useState<any[]>([]);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
+  const [memoryXp, setMemoryXp] = useState(0);
+  const [showMemoryXpGain, setShowMemoryXpGain] = useState(false);
 
   const startSpeedQuiz = () => {
     setSpeedStarted(true);
@@ -54,6 +58,8 @@ export default function SpielePage() {
   const answerSpeed = (answer: string) => {
     if (answer === speedQuestions[speedIndex].a) {
       setSpeedScore(s => s + 10);
+      setShowSpeedXpGain(true);
+      setTimeout(() => setShowSpeedXpGain(false), 500);
     }
     if (speedIndex < speedQuestions.length - 1) {
       setSpeedIndex(i => i + 1);
@@ -69,6 +75,7 @@ export default function SpielePage() {
     setMemoryCards(cards);
     setFlipped([]);
     setMatched([]);
+    setMemoryXp(0);
   };
 
   const flipCard = (uniqueId: number) => {
@@ -83,9 +90,12 @@ export default function SpielePage() {
       const [first, second] = newFlipped;
       const card1 = memoryCards.find(c => c.uniqueId === first);
       const card2 = memoryCards.find(c => c.uniqueId === second);
-      
+
       if (card1.id === card2.id) {
         setMatched([...matched, first, second]);
+        setMemoryXp(prev => prev + 5);
+        setShowMemoryXpGain(true);
+        setTimeout(() => setShowMemoryXpGain(false), 800);
         setFlipped([]);
       } else {
         setTimeout(() => setFlipped([]), 1000);
@@ -162,10 +172,14 @@ export default function SpielePage() {
                 <>
                   <span className="text-6xl mb-4 block">🎉</span>
                   <h2 className="text-xl font-bold mb-2">Fertig!</h2>
-                  <p className="text-gray-600 mb-2">{speedScore} Punkte in {speedTime} Sekunden</p>
+                  <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-2 mb-2">
+                    <Zap className="w-5 h-5 text-blue-600" />
+                    <span className="font-bold text-blue-700 text-lg">+{speedScore} XP verdient!</span>
+                  </div>
+                  <p className="text-gray-600 mb-2">in {speedTime} Sekunden</p>
                   <button
                     onClick={() => setCurrentGame('menu')}
-                    className="bg-pink-600 text-white px-8 py-4 rounded-xl font-semibold mt-4"
+                    className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold mt-4"
                   >
                     Zurück zum Menü
                   </button>
@@ -174,11 +188,24 @@ export default function SpielePage() {
             </div>
           ) : (
             <div>
-              <div className="flex justify-between mb-4">
+              <div className="flex justify-between items-center mb-4">
                 <span className="text-sm text-gray-500">Frage {speedIndex + 1}/8</span>
-                <span className="font-mono text-lg">{speedTime}s</span>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-lg">{speedTime}s</span>
+                  <div className="relative">
+                    <div className={`flex items-center gap-1.5 bg-blue-100 rounded-full px-3 py-1.5 transition-transform ${showSpeedXpGain ? 'scale-110' : 'scale-100'}`}>
+                      <Zap className="w-4 h-4 text-blue-600" />
+                      <span className="font-bold text-blue-700">{speedScore}</span>
+                    </div>
+                    {showSpeedXpGain && (
+                      <span className="absolute -top-4 right-0 text-blue-500 font-bold text-sm animate-bounce">
+                        +10
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-              
+
               <div className="bg-white rounded-2xl p-6 shadow-sm border mb-4">
                 <p className="text-lg font-medium text-center">
                   {speedQuestions[speedIndex].q}
@@ -190,18 +217,14 @@ export default function SpielePage() {
                   onClick={() => answerSpeed('sinussatz')}
                   className="bg-blue-100 text-blue-700 p-6 rounded-xl font-medium active:scale-95 transition-transform"
                 >
-                  🧑‍🏫 Sinussatz
+                  Sinussatz
                 </button>
                 <button
                   onClick={() => answerSpeed('kosinussatz')}
                   className="bg-red-100 text-red-700 p-6 rounded-xl font-medium active:scale-95 transition-transform"
                 >
-                  🤌 Kosinussatz
+                  Kosinussatz
                 </button>
-              </div>
-
-              <div className="mt-4 text-center">
-                <span className="text-pink-600 font-bold">{speedScore} Punkte</span>
               </div>
             </div>
           )}
@@ -211,24 +234,39 @@ export default function SpielePage() {
       {currentGame === 'memory' && (
         <div className="p-4">
           <div className="flex justify-between items-center mb-4">
-            <button 
+            <button
               onClick={() => setCurrentGame('menu')}
-              className="text-pink-600"
+              className="text-blue-600"
             >
               ← Zurück
             </button>
-            <span className="text-sm text-gray-500">
-              {matched.length / 2} / {memoryPairs.length} Paare
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-gray-500">{matched.length / 2} / {memoryPairs.length}</span>
+              <div className="relative">
+                <div className={`flex items-center gap-1.5 bg-blue-100 rounded-full px-3 py-1.5 transition-transform ${showMemoryXpGain ? 'scale-110' : 'scale-100'}`}>
+                  <Zap className="w-4 h-4 text-blue-600" />
+                  <span className="font-bold text-blue-700">{memoryXp}</span>
+                </div>
+                {showMemoryXpGain && (
+                  <span className="absolute -top-4 right-0 text-blue-500 font-bold text-sm animate-bounce">
+                    +5
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
 
           {matched.length === memoryPairs.length * 2 ? (
             <div className="text-center py-12">
               <span className="text-6xl mb-4 block">🎉</span>
               <h2 className="text-xl font-bold mb-4">Alle gefunden!</h2>
+              <div className="inline-flex items-center gap-2 bg-blue-100 rounded-full px-4 py-2 mb-4">
+                <Zap className="w-5 h-5 text-blue-600" />
+                <span className="font-bold text-blue-700 text-lg">+{memoryXp} XP verdient!</span>
+              </div>
               <button
                 onClick={() => { initMemory(); }}
-                className="bg-pink-600 text-white px-8 py-3 rounded-xl font-semibold"
+                className="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold block mx-auto"
               >
                 Nochmal spielen
               </button>

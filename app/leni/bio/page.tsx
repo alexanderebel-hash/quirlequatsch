@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowLeft, BookOpen, Gamepad2, ListOrdered, Brain, FileText, Microscope, Play, Headphones, Video } from 'lucide-react';
+import { ArrowLeft, Play, Headphones, Video, ChevronRight, Zap } from 'lucide-react';
 
 // Media URLs aus Environment Variables
 const MEDIA = {
@@ -9,67 +9,31 @@ const MEDIA = {
   podcast: process.env.NEXT_PUBLIC_BIO_PODCAST_URL || null,
 };
 
-const activities = [
-  {
-    href: '/leni/bio/lernen',
-    icon: BookOpen,
-    emoji: '📚',
-    title: 'Lernkarten',
-    description: 'Alle Infos durchblättern',
-    color: 'from-violet-500 to-purple-600',
-  },
-  {
-    href: '/leni/bio/memory',
-    icon: Gamepad2,
-    emoji: '🎴',
-    title: 'Memory',
-    description: 'Organellen & Funktionen zuordnen',
-    color: 'from-pink-500 to-rose-600',
-  },
-  {
-    href: '/leni/bio/sortieren',
-    icon: ListOrdered,
-    emoji: '🔀',
-    title: 'Sortieren',
-    description: 'Pro- vs. Eukaryoten einordnen',
-    color: 'from-blue-500 to-indigo-600',
-  },
-  {
-    href: '/leni/bio/quiz',
-    icon: Brain,
-    emoji: '❓',
-    title: 'Quiz',
-    description: '10 Fragen zum Üben',
-    color: 'from-emerald-500 to-teal-600',
-  },
-  {
-    href: '/leni/bio/test',
-    icon: FileText,
-    emoji: '📝',
-    title: 'Mini-Test',
-    description: 'Wie im echten Test',
-    color: 'from-orange-500 to-amber-600',
-  },
+// Nummerierter Lernpfad
+const modules = [
+  { id: 1, title: 'Lernkarten', desc: 'Alle Infos durchblättern', href: '/leni/bio/lernen', xp: 20, done: true },
+  { id: 2, title: 'Memory', desc: 'Organellen zuordnen', href: '/leni/bio/memory', xp: 25, done: true },
+  { id: 3, title: 'Sortieren', desc: 'Pro- vs. Eukaryoten', href: '/leni/bio/sortieren', xp: 25, done: true },
+  { id: 4, title: 'Quiz', desc: '10 Fragen zum Üben', href: '/leni/bio/quiz', xp: 30, done: false, current: true },
+  { id: 5, title: 'Mini-Test', desc: 'Wie im echten Test', href: '/leni/bio/test', xp: 50, done: false },
 ];
 
 export default function LeniBioPage() {
-  return (
-    <div className="px-4 md:px-6 lg:px-8 py-4 max-w-3xl mx-auto">
-      {/* Header */}
-      <Link href="/leni" className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-700 mb-6">
-        <ArrowLeft className="w-5 h-5" />
-        <span>Zurück</span>
-      </Link>
+  const completedCount = modules.filter(m => m.done).length;
+  const currentModule = modules.find(m => m.current) || modules.find(m => !m.done);
 
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-2xl mb-4">
-          <Microscope className="w-8 h-8 text-emerald-600" />
-        </div>
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-          🔬 Zellen-Trainer
-        </h1>
-        <p className="text-gray-500">Bio-Test am Donnerstag • Pro-/Eukaryoten & Organellen</p>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-purple-50 pb-24">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-6">
+        <Link href="/leni" className="text-emerald-200 text-sm mb-2 inline-block">
+          ← Zurück
+        </Link>
+        <h1 className="text-2xl font-bold">🔬 Zellen-Trainer</h1>
+        <p className="text-emerald-100">Bio-Test • Pro-/Eukaryoten & Organellen</p>
       </div>
+
+      <div className="px-4 py-4">
 
       {/* ============================================ */}
       {/* VIDEO SECTION */}
@@ -150,49 +114,61 @@ export default function LeniBioPage() {
       <div className="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-5 mb-6 text-white">
         <div className="flex items-center justify-between mb-3">
           <span className="font-medium">Dein Fortschritt</span>
-          <span className="text-emerald-100">0/5 Aktivitäten</span>
+          <span className="text-emerald-100">{completedCount}/{modules.length} Module</span>
         </div>
         <div className="h-2 bg-white/30 rounded-full overflow-hidden">
-          <div className="h-full bg-white rounded-full w-[0%]" />
+          <div className="h-full bg-white rounded-full transition-all" style={{ width: `${(completedCount / modules.length) * 100}%` }} />
         </div>
       </div>
 
-      {/* Themen-Überblick */}
-      <div className="bg-white rounded-2xl p-5 mb-6 border border-gray-100">
-        <h2 className="font-semibold text-gray-800 mb-3">📋 Was kommt dran?</h2>
-        <ul className="space-y-2 text-gray-600">
-          <li className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full" />
-            Prokaryoten vs. Eukaryoten
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full" />
-            Tierische vs. Pflanzliche Zellen
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full" />
-            Zellorganellen & ihre Funktionen
-          </li>
-        </ul>
-      </div>
+      {/* Nummerierter Lernpfad */}
+      <h2 className="font-semibold text-gray-800 mb-4">🎯 Dein Lernpfad</h2>
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 divide-y divide-gray-100">
+        {modules.map((mod, i) => {
+          const isLocked = !mod.done && !mod.current && i > 0 && !modules[i - 1].done;
 
-      {/* Aktivitäten */}
-      <h2 className="font-semibold text-gray-800 mb-4">🎯 Übungen</h2>
-      <div className="space-y-3">
-        {activities.map((act) => (
-          <Link key={act.href} href={act.href}>
-            <div className={`bg-gradient-to-r ${act.color} rounded-2xl p-4 text-white flex items-center gap-4 hover:shadow-lg transition-shadow active:scale-[0.98]`}>
-              <span className="text-3xl">{act.emoji}</span>
+          return mod.current ? (
+            <Link key={mod.id} href={mod.href}>
+              <div className="p-3 flex items-center gap-3 bg-emerald-50 hover:bg-emerald-100">
+                <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                  {mod.id}
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium text-gray-800 text-sm">{mod.title}</p>
+                  <p className="text-xs text-emerald-600 font-medium">Jetzt lernen!</p>
+                </div>
+                <div className="flex items-center gap-1.5 bg-emerald-100 rounded-full px-2 py-1">
+                  <Zap className="w-3 h-3 text-emerald-600" />
+                  <span className="text-xs font-medium text-emerald-700">+{mod.xp}</span>
+                </div>
+                <ChevronRight className="w-5 h-5 text-emerald-600" />
+              </div>
+            </Link>
+          ) : mod.done ? (
+            <Link key={mod.id} href={mod.href}>
+              <div className="p-3 flex items-center gap-3 hover:bg-gray-50">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+                <div className="flex-1">
+                  <p className="font-medium text-gray-800 text-sm">{mod.title}</p>
+                  <p className="text-xs text-gray-500">{mod.desc}</p>
+                </div>
+                <span className="text-green-500 text-xs font-medium">+{mod.xp} XP</span>
+              </div>
+            </Link>
+          ) : (
+            <div key={mod.id} className={`p-3 flex items-center gap-3 ${isLocked ? 'opacity-50' : ''}`}>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 text-sm font-bold">
+                {mod.id}
+              </div>
               <div className="flex-1">
-                <p className="font-semibold text-lg">{act.title}</p>
-                <p className="text-white/80 text-sm">{act.description}</p>
+                <p className="font-medium text-gray-600 text-sm">{mod.title}</p>
+                <p className="text-xs text-gray-400">{mod.desc}</p>
               </div>
-              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
-                <act.icon className="w-5 h-5" />
-              </div>
+              {isLocked && <span className="text-sm">🔒</span>}
             </div>
-          </Link>
-        ))}
+          );
+        })}
+      </div>
       </div>
     </div>
   );
